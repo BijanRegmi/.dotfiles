@@ -18,7 +18,7 @@ then
     echo "Sed i dont have lock feature yet :("
 elif [ "$selected_option" == "$logout" ]
 then
-    killall dwm
+    systemctl restart lightdm
 elif [ "$selected_option" == "$shutdown" ]
 then
     systemctl poweroff
