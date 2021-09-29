@@ -45,6 +45,7 @@ element {
 }
 
 element-text {
+  background-color: inherit;
   expand: true;
   vertical-align: 0.5;
   padding: 0px 13px;
@@ -56,6 +57,7 @@ element selected {
 }
 
 element-icon {
+    text-color: inherit;
     size: 30px;
     border: 0px;
 }
