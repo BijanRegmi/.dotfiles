@@ -12,7 +12,7 @@ alias ll='ls -la'				# List Hidden Files too
 alias rmd='rm -rf'				# Remove Directory
 alias srmd='sudo rm -rf'		# Remove Directory as root
 alias cpd='cp -r'				# Copy Directory
-
+alias gtop='LANG=en_US.utf8 TERM=xterm-256color gtop'
 reset="\[\033[0m\]"           	# Reset Color
 Red="\[\033[1;31m\]"          	# Bold Red
 Cyan="\[\033[1;36m\]"         	# Bold Cyan
