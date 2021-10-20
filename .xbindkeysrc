@@ -26,8 +26,14 @@
 ##	Screenshot	##
 ##################
 
-"flameshot full -c"
+"flameshot screen -c"
 	Print
 
-"flameshot full -p ~/Pictures/Screenshots && pkill flameshot"
+"flameshot full -p ~/Pictures/Screenshots && sleep 2 && pkill flameshot"
+	Control+Shift+Print
+
+"flameshot screen -p ~/Pictures/Screenshots && sleep 2 && pkill flameshot"
+	Shift+Print
+
+"flameshot gui"
 	Alt+Print
