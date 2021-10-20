@@ -21,3 +21,13 @@
 
 "backlight_control -2"
 	XF86MonBrightnessDown
+
+##################
+##	Screenshot	##
+##################
+
+"flameshot full -c"
+	Print
+
+"flameshot full -p ~/Pictures/Screenshots"
+	Alt+Print
