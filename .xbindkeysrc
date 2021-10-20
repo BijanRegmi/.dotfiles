@@ -2,10 +2,10 @@
 ##	Volume	##
 ##############
 
-"pactl set-sink-volume @DEFAULT_SINK@ +1000"
+"pactl set-sink-volume @DEFAULT_SINK@ +1%"
 	XF86AudioRaiseVolume
 
-"pactl set-sink-volume @DEFAULT_SINK@ -1000"
+"pactl set-sink-volume @DEFAULT_SINK@ -1%"
 	XF86AudioLowerVolume
 
 "pactl set-sink-mute @DEFAULT_SINK@ toggle"
@@ -29,5 +29,5 @@
 "flameshot full -c"
 	Print
 
-"flameshot full -p ~/Pictures/Screenshots"
+"flameshot full -p ~/Pictures/Screenshots && pkill flameshot"
 	Alt+Print
