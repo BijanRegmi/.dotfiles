@@ -121,8 +121,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,				XK_u,		setlayout,		{.v = &layouts[5]} }, /* monocle */
 	{ MODKEY,						XK_i,		setlayout,		{.v = &layouts[6]} }, /* centeredmaster */
 	{ MODKEY|ShiftMask,				XK_i,		setlayout,		{.v = &layouts[7]} }, /* centeredfloatingmaster */
-
-	{ MODKEY,                       XK_o,      	spawn,          SHCMD("rofi -modi file-browser -show file-browser") },
 	
 	/* HOME ROW */
 	{ MODKEY,		                XK_a,      	togglegaps,     {0} },
@@ -154,7 +152,6 @@ static Key keys[] = {
 
 	
 	/* SPECIAL KEYS*/
-	{ MODKEY,                       XK_Tab,    	spawn,          SHCMD("rofi -show window") },
 	{ MODKEY,             			XK_Return, 	spawn,          {.v = termcmd } },
 
 /*  { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} }, */
