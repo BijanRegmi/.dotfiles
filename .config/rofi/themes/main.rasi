@@ -1,7 +1,8 @@
 configuration {
   display-drun: "";
-  display-window: "";
-  display-windowcd: "";
+  display-run: "";
+  display-filebrowser: "";
+  display-window: "";
   display-ssh: "";
   show-icons: true;
   drun-display-format: "{icon} {name}";
@@ -12,14 +13,10 @@ configuration {
   font: "NotoMono Nerd Font 12.5";
   width: 600px;
   
-  bg: #00000033;
-  bg-alt: #33333333;
+  bg: #000000;
+  bg-alt: #18181880;
   fg: #FFFFFF;
   fg-alt: #333333;
-
-  red: #ff0000;
-  green: #00FF00;
-  blue: #0000FF;
 
   border: 0;
   margin: 0;
@@ -28,49 +25,58 @@ configuration {
 }
 
 window {
+  background-color: #00000000;
   transparency: "real";
 }
 
 mainbox {
-  background-color: @bg;
+  background-color: #00000000;
   children: [inputbar, listview];
 }
 
 inputbar {
+  background-color: @bg-alt;
+  text-color: @fg;
   children: [prompt, entry];
 }
 
 prompt {
-  background-color: @bg-alt;
   enabled: true;
-  padding: 12 0 0 12;
-  text-color: #00ff00;
+  text-color: inherit;
+  background-color: inherit;
+  padding: 12;
 }
 
 entry {
-  background-color: @bg-alt;
+  text-color: inherit;
+  background-color: inherit;
   padding: 12;
-  text-color: @fg;
 }
 
 listview {
-  background-color: @bg;
   columns: 1;
   lines: 7;
+  cycle: false;
+  dynamic: true;
+  background-color: @bg;
+  children: [element];
 }
 
 element {
   padding: 12;
-  background-color: @red;
-  text-color: @fg-alt;
+  background-color: inherit;
+  children: [element-icon, element-text];
+}
+
+element-icon {
+  background-color: inherit;
 }
 
 element-text {
-  background-color: @bg-alt;
   text-color: @fg-alt;
+  background-color: inherit;
 }
 
-element selected {
-  background-color: @bg-alt;
+element-text selected {
   text-color: @fg;
 }
