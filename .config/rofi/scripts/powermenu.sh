@@ -1,24 +1,18 @@
-lock="    Lock"
-logout="    Logout"
 shutdown="    Shutdown"
 reboot="    Reboot"
-sleep="    Sleep"
+sleep="⏾     Sleep"
+logout="    Logout"
 
-selected_option=$(echo "$lock
-$logout
-$sleep
+selected_option=$(echo "$shutdown
 $reboot
-$shutdown" | rofi -dmenu\
-                  -i\
-                  -p "ﮣ"\
-                  -config "~/.config/rofi/themes/powermenu.rasi" )
+$sleep
+$logout" | rofi -dmenu\
+                  -l 4\
+                  -p "⏻")
 
-if [ "$selected_option" == "$lock" ]
+if [ "$selected_option" == "$logout" ]
 then
-    echo "Sed i dont have lock feature yet :("
-elif [ "$selected_option" == "$logout" ]
-then
-    systemctl restart lightdm
+    killall -u immo
 elif [ "$selected_option" == "$shutdown" ]
 then
     systemctl poweroff
@@ -29,6 +23,5 @@ elif [ "$selected_option" == "$sleep" ]
 then
     systemctl suspend
 else
-    echo "No match"
-    
+    echo "No match" 
 fi
