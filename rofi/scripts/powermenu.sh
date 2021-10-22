@@ -7,6 +7,7 @@ selected_option=$(echo "$shutdown
 $reboot
 $sleep
 $logout" | rofi -dmenu\
+                  -i\
                   -l 4\
                   -p "⏻")
 
