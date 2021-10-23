@@ -4,6 +4,7 @@ configuration {
   display-filebrowser: "";
   display-window: "";
   display-ssh: "";
+  display-emoji: "ﲃ";
   show-icons: true;
   drun-display-format: "{icon} {name}";
   modi: "window,run,drun";
