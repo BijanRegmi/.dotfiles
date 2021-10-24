@@ -134,7 +134,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_d,      	spawn,          SHCMD("rofi -show run") },
 	
 	{ MODKEY,						XK_f,		setlayout,		{.v = &layouts[13]}}, /* no layout */
-/*	{ MODKEY|ShiftMask,				XK_f,		togglefullscr,	{0} }, */
+	{ MODKEY|ShiftMask,				XK_f,		togglefullscr,	{0} },
 
 	{ MODKEY,                       XK_h,      	setmfact,       {.f = -0.05} },
 
