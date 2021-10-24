@@ -18,3 +18,6 @@ compton --config ~/.config/compton/compton.conf &
 
 # Start notification-daemon
 dunst &
+
+# Xmodmap
+[[-f ~/.xmodmap ]] && xmodmap ~/.xmodmap
