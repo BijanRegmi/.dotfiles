@@ -29,11 +29,11 @@
 "flameshot screen -c"
 	Print
 
-"flameshot full -p ~/Pictures/Screenshots && sleep 2 && pkill flameshot"
+"sleep 3 && flameshot gui"
 	Control+Shift+Print
 
 "flameshot screen -p ~/Pictures/Screenshots && sleep 2 && pkill flameshot"
-	Shift+Print
+	Alt+Print
 
 "flameshot gui"
-	Alt+Print
+	Control+Print
