@@ -15,6 +15,7 @@ alias srmd='sudo rm -rf'		# Remove Directory as root
 alias cpd='cp -r'				# Copy Directory
 
 alias gtop='LANG=en_US.utf8 TERM=xterm-256color gtop'
+alias r='ranger'
 
 alias 2mon='xrandr --output HDMI-1 --mode 1024x768 --output eDP-1 --right-of HDMI-1 --primary'
 alias rmon='xrandr --auto'
