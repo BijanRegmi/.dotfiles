@@ -1,10 +1,27 @@
-" auto-install vim-plug
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  "autocmd VimEnter * PlugInstall
-  "autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
-
 call plug#begin('~/.config/nvim/autoload/plugged')
+
+" Stable version of coc
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Onedark color scheme
+Plug 'joshdick/onedark.vim'
+
+" Auto pair completion
+Plug 'jiangmiao/auto-pairs'
+
+" Colorize hex codes
+Plug 'norcalli/nvim-colorizer.lua'
+
+" Commenter
+Plug 'preservim/nerdcommenter'
+
+" Airline
+Plug 'vim-airline/vim-airline'
+
+" Airline themes
+Plug 'vim-airline/vim-airline-themes'
+
+" Ranger
+Plug 'kevinhwang91/rnvimr'
+
 call plug#end()
