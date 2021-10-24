@@ -20,4 +20,4 @@ compton --config ~/.config/compton/compton.conf &
 dunst &
 
 # Xmodmap
-[[-f ~/.xmodmap ]] && xmodmap ~/.xmodmap
+xmodmap ~/.xmodmap &
