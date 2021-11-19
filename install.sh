@@ -96,3 +96,13 @@ function ranger_install(){
     echo -e "\n$green[+] Installation of ranger complete :)$reset"
 }
 
+function nvim_install(){
+    echo -e "\n$green[+] Installing neovim$reset"
+    sudo pacman -S neovim
+
+    echo -e "\n$green[+] Working on Plugins:$reset"
+    create_links $(pwd)/nvim /home/$USER/.config/nvim
+
+    echo -e "\n$green[+] Installation of neovim complete :)$reset"
+}
+
