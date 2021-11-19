@@ -114,3 +114,42 @@ function neofetch_install(){
 
     echo -e "\n$green[+] Installation of neofetch complete :)$reset"
 }
+
+highlight () {
+    local ch=$1-1
+    if [[ ${selections[ch]} == "*" ]]; then
+        selections[ch]=
+    else
+        selections[ch]=*
+    fi
+}
+
+menu() {
+    clear
+    for i in ${!options[@]}; do 
+        printf "[%1s] %d. %s\n" "${selections[i]}" "$((i+1))" "${options[i]}"
+    done
+    echo -ne "$prompt"
+}
+
+options=("st" "dwm" "rofi" "ranger" "neovim" "neofetch")
+install_fxn=(st_install dwm_install rofi_install ranger_install nvim_install neofetch_install)
+
+prompt="Select components to install. Input 0 once done selecting: "
+menu
+while read ch; do
+    if [ $ch -eq 0 ]; then
+        break
+    elif [ $ch -ge 0 ] && [ $ch -le ${#options[@]} ]; then
+        highlight $ch
+    else
+        prompt="Invalid Number\nSelect components to install. Input 0 once done selecting: "
+    fi
+
+    menu
+    prompt="Select components to install. Input 0 once done selecting: "
+done
+
+for i in ${!options[@]}; do 
+    [[ "${selections[i]}" == "*" ]] && { printf "\n$green[#] Installing %s$reset\n" "${options[i]}";} && ${install_fxn[i]}
+done
