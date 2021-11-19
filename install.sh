@@ -106,3 +106,11 @@ function nvim_install(){
     echo -e "\n$green[+] Installation of neovim complete :)$reset"
 }
 
+function neofetch_install(){
+    echo -e "\n$green[+] Installing neofetch$reset"
+    sudo pacman -S neofetch
+
+    create_links $(pwd)/neofetch /home/$USER/.config/neofetch
+
+    echo -e "\n$green[+] Installation of neofetch complete :)$reset"
+}
