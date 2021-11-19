@@ -1,3 +1,4 @@
+set -e
 BASEDIR=$(dirname "$0")
 col="\e[0;92m"
 reset="\e[0m"
