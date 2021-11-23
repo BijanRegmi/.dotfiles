@@ -8,13 +8,13 @@ nitrogen --restore &
 redshift -O 3500 &
 
 # Start Network-Manager-Applet
-nm-applet &
+# nm-applet &
 
 # Turn on numlock
 numlockx on &
 
 # Setup Window Compositor
-compton --config ~/.config/compton/compton.conf &
+picom --config ~/.config/picom/picom.conf &
 
 # Start notification-daemon
 dunst &
