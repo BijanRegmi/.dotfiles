@@ -54,6 +54,8 @@ export LS_COLORS
 # Set default editor
 export EDITOR='nvim'
 
+export PATH=$PATH:/home/$USER/.dotnet
+
 neofetch
 
 
