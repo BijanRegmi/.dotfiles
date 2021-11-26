@@ -1,8 +1,4 @@
-" Set leader key
-let g:mapleader = "\<Space>"
-
 syntax enable                           " Enables syntax highlighing
-
 set encoding=utf-8                      " Encoding
 set fileencoding=utf-8                  " File encoding
 set fileformat=unix                     " File format

@@ -9,7 +9,6 @@ function! ToggleBG()
         let g:opaquebg=1
     endif
 endfunction
-nmap <leader>t :call ToggleBG()<CR>
 
 hi Comment cterm=italic
 let g:onedark_hide_endofbuffer=1
