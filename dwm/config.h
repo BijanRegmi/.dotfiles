@@ -43,7 +43,6 @@ static const unsigned int alphas[][3]      = {
 
 /* tagging */
 static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
-static const char *tagsalt[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -150,13 +149,9 @@ static Key keys[] = {
 
 	{ MODKEY,                       XK_b,      	togglebar,      {0} },
 	
-	{ MODKEY,                       XK_n,      	togglealttag,   {0} },
-
-	
 	/* SPECIAL KEYS*/
 	{ MODKEY,             			XK_Return, 	spawn,          {.v = termcmd } },
 
-/*  { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} }, */
 	{ MODKEY,                       XK_0,      	view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      	tag,            {.ui = ~0 } },
 
