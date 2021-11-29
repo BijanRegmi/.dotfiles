@@ -52,6 +52,8 @@ function st_install(){
     patch < ../../st/delkey.diff
     echo -e "\n$yellow[4] NewTerm in cwd$reset"
     patch < ../../st/newterm.diff
+    echo -e "\n$yellow[5] Alpha on focus$reset"
+    patch < ../../st/alpha-focus.diff
 
     echo -e "\n$blue[+] Compiling$reset"
     cp $BASEFULLDIR/st/config.h config.h
