@@ -14,6 +14,9 @@
 }
 
 window {
+  border: 1;
+  border-color: #2D2D2D;
+  border-radius: 20;
   background-color: #00000000;
   transparency: "real";
 }
