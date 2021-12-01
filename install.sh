@@ -33,6 +33,30 @@ function cleanup(){
     echo -e "\n$green[*] Temporary folders cleaned$reset"
 }
 
+function dunst_install(){
+    cd $TMPDIR
+
+    echo -e "\n$blue[+] Downloading dunst-double border fork$reset"
+    git clone https://github.com/Barbarossa93/dunst
+    cd dunst
+
+    echo -e "\n$blue[+] Compiling$reset"
+    sudo make install
+
+    create_links $BASEFULLDIR/dunst ~/.config/dunst
+
+    echo -e "\n$green[#] Installation of dunst complete :)$reset"
+}
+
+function nitrogen_install(){
+    echo -e "\n$blue[+] Installing nitrogen from pacman$reset"
+    sudo pacman -S nitrogen
+
+    create_links $BASEFULLDIR/nitrogen ~/.config/nitrogen
+
+    echo -e "\n$green[#] Installation of nitrogen complete :)$reset"
+}
+
 function st_install(){
     cd $TMPDIR
 
@@ -137,6 +161,30 @@ function neofetch_install(){
     echo -e "\n$green[#] Installation of neofetch complete :)$reset"
 }
 
+function picom_install(){
+    echo -e "\n$blue[+] Installing picom-ibhagwan fork$reset"
+    yay -S picom-ibhagwan-git
+
+    create_links $BASEFULLDIR/picom ~/.config/picom
+
+    echo -e "\n$green[#] Installation of picom complete :)$reset"
+}
+
+function polybar_install(){
+    cd $TMPDIR
+    
+    echo -e "\n$blue[+] Installing polybar-dwm-module fork$reset"
+    git clone https://github.com/nixenos/polybar-dwm-module
+    cd polybar-dwm-module
+
+    echo -e "\n$blue[+] Building$reset"
+    ./build.sh -d
+    
+    create_links $BASEFULLDIR/polybar ~/.config/polybar
+
+    echo -e "\n$green[#] Installation of polybar complete :)"
+}
+
 highlight () {
     local ch=$1-1
     if [[ ${selections[ch]} == "*" ]]; then
@@ -154,9 +202,9 @@ menu() {
     echo -ne "$prompt"
 }
 
-    options=("st" "dwm" "rofi" "ranger" "neovim" "neofetch" "cleanup")
- selections=(" "  " "   " "    " "      " "      " "        "*")
-install_fxn=(st_install dwm_install rofi_install ranger_install nvim_install neofetch_install cleanup)
+    options=("st" "dwm" "rofi" "ranger" "neovim" "neofetch" "dunst" "nitrogen" "polybar" "picom" "cleanup")
+ selections=(" "  " "   " "    " "      " "      " "        " "     " "        " "       " "     "*")
+install_fxn=(st_install dwm_install rofi_install ranger_install nvim_install neofetch_install dunst_install nitrogen_install polybar_install picom_install cleanup)
 
 prompt="Select components to install. Input 0 once done selecting: "
 menu
