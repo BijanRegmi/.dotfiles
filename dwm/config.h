@@ -117,6 +117,7 @@ static Key keys[] = {
 	{ MODKEY,						XK_e,		spawn,			SHCMD("rofi -show emoji -modi emoji -font 'JetBrains Mono 10'") },
 
 	{ MODKEY,						XK_r,		spawn,			SHCMD("st ranger") },
+	{ MODKEY|ShiftMask,             XK_r,      	togglesticky,   {0} },
 
 	{ MODKEY,						XK_t,		setlayout,		{.v = &layouts[0]} }, /* tile */
 	{ MODKEY|ShiftMask,				XK_t,		setlayout,		{.v = &layouts[1]} }, /* bstack */
@@ -135,7 +136,8 @@ static Key keys[] = {
 	{ MODKEY,		                XK_a,      	togglegaps,     {0} },
 	{ MODKEY|ShiftMask,    			XK_a,      	defaultgaps,    {0} },
 
-	{ MODKEY,                       XK_s,      	togglesticky,   {0} },
+	{ MODKEY,						XK_s,		spawn,			SHCMD("spotify") },
+	{ MODKEY|ShiftMask,             XK_s,      	spawn,   		SHCMD("st speedtest") },
 
 	{ MODKEY,                       XK_d,      	spawn,          SHCMD("rofi -modi drun -show drun") },
 	{ MODKEY|ShiftMask,             XK_d,      	spawn,          SHCMD("rofi -show run") },
