@@ -112,7 +112,11 @@ static Key keys[] = {
 	{ MODKEY,             			XK_q,      	killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_q,      	quit,           {0} },
 
+	{ MODKEY|ShiftMask,				XK_w,		spawn,			SHCMD("~/.dotfiles/scripts/toggle_bg.sh") },
+
 	{ MODKEY,						XK_e,		spawn,			SHCMD("rofi -show emoji -modi emoji -font 'JetBrains Mono 10'") },
+
+	{ MODKEY,						XK_r,		spawn,			SHCMD("st ranger") },
 
 	{ MODKEY,						XK_t,		setlayout,		{.v = &layouts[0]} }, /* tile */
 	{ MODKEY|ShiftMask,				XK_t,		setlayout,		{.v = &layouts[1]} }, /* bstack */
@@ -147,7 +151,11 @@ static Key keys[] = {
 	{ MODKEY,              			XK_z,      	incrgaps,       {.i = +1 } },
 	{ MODKEY,  					    XK_x,      	incrgaps,       {.i = -1 } },
 
+	{MODKEY,						XK_v,		spawn,			SHCMD("code")},
+	{MODKEY|ShiftMask,				XK_v,		spawn,			SHCMD("code ~/.dotfiles")},
+
 	{ MODKEY,                       XK_b,      	togglebar,      {0} },
+	{ MODKEY|ShiftMask,				XK_b,		spawn,			SHCMD("brave")},
 	
 	/* SPECIAL KEYS*/
 	{ MODKEY,             			XK_Return, 	spawn,          {.v = termcmd } },
