@@ -109,9 +109,9 @@ static Key keys[] = {
 	
 	
 	/* TOP ROW */
-	{ MODKEY,             			XK_q,      	killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_q,      	quit,           {0} },
 
+	{ MODKEY,             			XK_w,      	killclient,     {0} },
 	{ MODKEY|ShiftMask,				XK_w,		spawn,			SHCMD("~/.dotfiles/scripts/toggle_bg.sh") },
 
 	{ MODKEY,						XK_e,		spawn,			SHCMD("rofi -show emoji -modi emoji -font 'JetBrains Mono 10'") },
@@ -126,6 +126,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,				XK_u,		setlayout,		{.v = &layouts[5]} }, /* monocle */
 	{ MODKEY,						XK_i,		setlayout,		{.v = &layouts[6]} }, /* centeredmaster */
 	{ MODKEY|ShiftMask,				XK_i,		setlayout,		{.v = &layouts[7]} }, /* centeredfloatingmaster */
+	{ MODKEY,						XK_o,		setlayout,		{.v = &layouts[8]} }, /* bstackhoriz */
+	{ MODKEY|ShiftMask,				XK_o,		setlayout,		{.v = &layouts[9]} }, /* grid */
+	{ MODKEY,						XK_p,		setlayout, 		{.v = &layouts[10]}}, /* nrowgrid */
+	{ MODKEY|ShiftMask,				XK_p,		setlayout,		{.v = &layouts[11]}}, /* horizgrid */
 	
 	/* HOME ROW */
 	{ MODKEY,		                XK_a,      	togglegaps,     {0} },
@@ -154,8 +158,8 @@ static Key keys[] = {
 	{MODKEY,						XK_v,		spawn,			SHCMD("code")},
 	{MODKEY|ShiftMask,				XK_v,		spawn,			SHCMD("code ~/.dotfiles")},
 
-	{ MODKEY,                       XK_b,      	togglebar,      {0} },
-	{ MODKEY|ShiftMask,				XK_b,		spawn,			SHCMD("brave")},
+	{ MODKEY,						XK_b,		spawn,			SHCMD("brave")},
+	{ MODKEY|ShiftMask,             XK_b,      	togglebar,      {0} },
 	
 	/* SPECIAL KEYS*/
 	{ MODKEY,             			XK_Return, 	spawn,          {.v = termcmd } },
