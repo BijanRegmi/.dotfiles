@@ -206,19 +206,20 @@ menu() {
  selections=(" "  " "   " "    " "      " "      " "        " "     " "        " "       " "     "*")
 install_fxn=(st_install dwm_install rofi_install ranger_install nvim_install neofetch_install dunst_install nitrogen_install polybar_install picom_install cleanup)
 
-prompt="Select components to install. Input 0 once done selecting: "
+prompt="Select components to install. Press enter once done selecting: "
 menu
 while read ch; do
-    if [ $ch -eq 0 ]; then
+    echo $ch
+    if [[ $ch = "" ]]; then
         break
     elif [ $ch -ge 0 ] && [ $ch -le ${#options[@]} ]; then
         highlight $ch
     else
-        prompt="Invalid Number\nSelect components to install. Input 0 once done selecting: "
+        prompt="Invalid Number\nSelect components to install. Press enter once done selecting: "
     fi
 
     menu
-    prompt="Select components to install. Input 0 once done selecting: "
+    prompt="Select components to install. Press enter once done selecting: "
 done
 
 for i in ${!options[@]}; do 
