@@ -137,7 +137,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    			XK_a,      	defaultgaps,    {0} },
 
 	{ MODKEY,						XK_s,		spawn,			SHCMD("spotify") },
-	{ MODKEY|ShiftMask,             XK_s,      	spawn,   		SHCMD("st speedtest") },
+	{ MODKEY|ShiftMask,             XK_s,      	spawn,   		SHCMD("st bash -c 'speedtest && read'") },
 
 	{ MODKEY,                       XK_d,      	spawn,          SHCMD("rofi -modi drun -show drun") },
 	{ MODKEY|ShiftMask,             XK_d,      	spawn,          SHCMD("rofi -show run") },
