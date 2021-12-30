@@ -157,8 +157,10 @@ static Key keys[] = {
 	{ MODKEY,              			XK_z,      	incrgaps,       {.i = +1 } },
 	{ MODKEY,  					    XK_x,      	incrgaps,       {.i = -1 } },
 
-	{MODKEY,						XK_v,		spawn,			SHCMD("code")},
-	{MODKEY|ShiftMask,				XK_v,		spawn,			SHCMD("code ~/.dotfiles")},
+	{ MODKEY,						XK_c,		spawn,			SHCMD("rofi -show calc -modi calc -no-show-match -no-sort")},
+
+	{ MODKEY,						XK_v,		spawn,			SHCMD("code")},
+	{ MODKEY|ShiftMask,				XK_v,		spawn,			SHCMD("code ~/.dotfiles")},
 
 	{ MODKEY,						XK_b,		spawn,			SHCMD("brave")},
 	{ MODKEY|ShiftMask,             XK_b,      	togglebar,      {0} },
