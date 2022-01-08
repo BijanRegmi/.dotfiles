@@ -1,11 +1,16 @@
-arch="/home/$USER/.wallpapers/arch.jpg"
-itachi="/home/$USER/.wallpapers/itachi.jpg"
-wall="/home/$USER/.wallpapers/wallpaper.jpg"
+set -e
 
-if cmp -s $arch $wall; then
-    cp $itachi $wall
-else
-    cp $arch $wall
+count=$(expr $(ls -a ~/.wallpapers | wc -l) - 4)
+curr=$(cat ~/.wallpapers/.wallpaper)
+curr=$(expr $curr + 1)
+
+if [ $curr -gt $count ]; then
+    curr=$(expr $curr - $(expr $count))
 fi
 
+name=~/.wallpapers/$curr.jpg
+
+cp $name ~/.wallpapers/wallpaper.jpg
 nitrogen --restore
+
+echo $curr > ~/.wallpapers/.wallpaper
