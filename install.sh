@@ -113,6 +113,8 @@ function dwm_install(){
     patch < ../../dwm/sticky.diff
     echo -e "\n$yellow[7] AlphaBar$reset"
     patch < ../../dwm/alpha.diff
+    echo -e "\n$yellow[8] CenterFirstWindow$reset"
+    patch < ../../dwm/centerFirstWindow.diff
 
     echo -e "\n$blue[+] Compiling$reset"
     cp $BASEFULLDIR/dwm/config.h config.h
