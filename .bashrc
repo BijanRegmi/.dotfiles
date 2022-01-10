@@ -18,7 +18,7 @@ alias cdc='cd ~/Documents/Coding'
 alias gtop='LANG=en_US.utf8 TERM=xterm-256color gtop'
 alias r='ranger'
 
-alias cmatrix='neo -m "N  O  T    H  A  C  K  E  R" --color=green2 --shortpct=100 --speed=12 --async -d 1.5 --lingerms=1,1 --rippct=0 --maxdpc=1 --charset=DEVANAGARI'
+alias cmatrix='neo --color=green2 --shortpct=100 --speed=12 --async -d 1.5 --lingerms=1,1 --rippct=0 --maxdpc=1 --charset=DEVANAGARI'
 
 reset="\[\033[0m\]"           	# Reset Color
 Red="\[\033[1;31m\]"          	# Bold Red

@@ -1,15 +1,31 @@
 {
-	"coc.preferences.formatOnSaveFiletypes": [
-		"css",
-		"markdown",
-		"javascript",
-		"graphql",
-		"html",
-		"yaml",
-		"json",
-		"python"
-	],
-	// python config
-	"python.linting.enabled": true,
-	"python.linting.pylintEnabled": true
+    "coc.preferences.formatOnSaveFiletypes": [
+        "css",
+        "markdown",
+        "javascript",
+        "graphql",
+        "html",
+        "yaml",
+        "json",
+        "python"
+    ],
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "languageserver": {
+        "clangd": {
+            "command": "clangd",
+            "rootPatterns": [
+                "compile_flags.txt",
+                "compile_commands.json"
+            ],
+            "filetypes": [
+                "c",
+                "cc",
+                "cpp",
+                "c++",
+                "objc",
+                "objcpp"
+            ]
+        }
+    }
 }
