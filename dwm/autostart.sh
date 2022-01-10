@@ -21,3 +21,6 @@ dunst &
 
 # Xmodmap
 xmodmap ~/.xmodmap &
+
+# Start mpd daemon
+[ ! -s ~/.config/mpd/pid ] && mpd

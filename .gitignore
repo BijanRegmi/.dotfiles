@@ -1,2 +1,7 @@
 polybar/temp_location.ini
 __pycache__/
+mpd/database
+mpd/pid
+mpd/socket
+mpd/state
+mpd/playlists/*
