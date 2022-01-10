@@ -1,0 +1,29 @@
+From 2dafe6fff2c59799f9142f526fca14f55618a904 Mon Sep 17 00:00:00 2001
+From: Bijan Regmi <vizandabijan@gmail.com>
+Date: Tue, 11 Jan 2022 01:13:19 +0545
+Subject: [PATCH] This freaking bug
+
+---
+ x.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/x.c b/x.c
+index 58c5a20..c5387ba 100644
+--- a/x.c
++++ b/x.c
+@@ -1502,6 +1502,12 @@ xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len, int x, i
+ 	if (winy + win.ch >= win.vborderpx + win.th)
+ 		xclear(winx, winy + win.ch, winx + width, win.h);
+ 
++    /* Clear border for anysize patch. */
++	xclear(0, 0, win.w, win.vborderpx);
++	xclear(0, 0, win.hborderpx, win.h);
++	xclear(0, win.h - win.vborderpx, win.w, win.vborderpx);
++	xclear(win.w - win.hborderpx, 0, win.hborderpx, win.h);
++
+ 	/* Clean up the region we want to draw to. */
+ 	XftDrawRect(xw.draw, bg, winx, winy, width, win.ch);
+ 
+-- 
+2.34.1
+
