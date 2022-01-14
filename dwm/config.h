@@ -120,6 +120,7 @@ static Key keys[] = {
 
 	{ MODKEY,						XK_t,		setlayout,		{.v = &layouts[0]} }, /* tile */
 	{ MODKEY|ShiftMask,				XK_t,		setlayout,		{.v = &layouts[1]} }, /* bstack */
+	{ MODKEY|ControlMask,			XK_t,		spawn,			SHCMD("telegram-desktop") },
 	{ MODKEY,						XK_y,		setlayout,		{.v = &layouts[2]} }, /* spiral */
 	{ MODKEY|ShiftMask,				XK_y,		setlayout,		{.v = &layouts[3]} }, /* dwindle */
 	{ MODKEY,						XK_u,		setlayout,		{.v = &layouts[4]} }, /* deck */
@@ -163,6 +164,8 @@ static Key keys[] = {
 
 	{ MODKEY,						XK_b,		spawn,			SHCMD("brave")},
 	{ MODKEY|ShiftMask,             XK_b,      	togglebar,      {0} },
+
+	{ MODKEY,						XK_m,		spawn,			SHCMD("st ncmpcpp& st cava")},
 	
 	/* SPECIAL KEYS*/
 	{ MODKEY,             			XK_Return, 	spawn,          {.v = termcmd } },
