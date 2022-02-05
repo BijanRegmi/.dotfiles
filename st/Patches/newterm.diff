@@ -1,0 +1,64 @@
+From 4fd58bc373452c2feffb14baf447f10167283ebc Mon Sep 17 00:00:00 2001
+From: Bijan Regmi <vizandabijan@gmail.com>
+Date: Sat, 5 Feb 2022 22:31:22 +0545
+Subject: [PATCH] Newterm
+
+---
+ st.c | 21 +++++++++++++++++++++
+ st.h |  1 +
+ 2 files changed, 22 insertions(+)
+
+diff --git a/st.c b/st.c
+index 02d3d62..bb593b0 100644
+--- a/st.c
++++ b/st.c
+@@ -186,6 +186,7 @@ typedef struct {
+ } STREscape;
+ 
+ static void execsh(char *, char **);
++static char *getcwd_by_pid(pid_t pid);
+ static void stty(char **);
+ static void sigchld(int);
+ static void ttywriteraw(const char *, size_t);
+@@ -1094,6 +1095,26 @@ tcursor(int mode)
+ 	}
+ }
+ 
++void
++newterm(const Arg* a)
++{
++	switch (fork()) {
++	case -1:
++		die("fork failed: %s\n", strerror(errno));
++		break;
++	case 0:
++		chdir(getcwd_by_pid(pid));
++		execlp("st", "./st", NULL);
++		break;
++	}
++}
++
++static char *getcwd_by_pid(pid_t pid) {
++	char buf[32];
++	snprintf(buf, sizeof buf, "/proc/%d/cwd", pid);
++	return realpath(buf, NULL);
++}
++
+ void
+ tresetcursor(void)
+ {
+diff --git a/st.h b/st.h
+index d81c262..7d75e56 100644
+--- a/st.h
++++ b/st.h
+@@ -96,6 +96,7 @@ void redraw(void);
+ void tfulldirt(void);
+ void draw(void);
+ 
++void newterm(const Arg *);
+ void kscrolldown(const Arg *);
+ void kscrollup(const Arg *);
+ void printscreen(const Arg *);
+-- 
+2.35.1
+
