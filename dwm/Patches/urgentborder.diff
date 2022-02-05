@@ -1,0 +1,38 @@
+From 133f0089163086e10ccb414a9813dc553bb37950 Mon Sep 17 00:00:00 2001
+From: Bijan Regmi <vizandabijan@gmail.com>
+Date: Sat, 5 Feb 2022 18:07:05 +0545
+Subject: [PATCH] UrgentBorder
+
+---
+ dwm.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/dwm.c b/dwm.c
+index ca25190..2f13494 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -63,7 +63,7 @@
+ 
+ /* enums */
+ enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
+-enum { SchemeNorm, SchemeSel }; /* color schemes */
++enum { SchemeNorm, SchemeSel, SchemeUrg }; /* color schemes */
+ enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
+        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
+        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
+@@ -2414,8 +2414,11 @@ updatewmhints(Client *c)
+ 		if (c == selmon->sel && wmh->flags & XUrgencyHint) {
+ 			wmh->flags &= ~XUrgencyHint;
+ 			XSetWMHints(dpy, c->win, wmh);
+-		} else
++		} else {
+ 			c->isurgent = (wmh->flags & XUrgencyHint) ? 1 : 0;
++			if (c->isurgent)
++				XSetWindowBorder(dpy, c->win, scheme[SchemeUrg][ColBorder].pixel);
++		}
+ 		if (wmh->flags & InputHint)
+ 			c->neverfocus = !wmh->input;
+ 		else
+-- 
+2.35.1
+

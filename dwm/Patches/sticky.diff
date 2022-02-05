@@ -1,0 +1,58 @@
+From 0aae669f3a2ebd3a3e1b8fce49f80c9a1c90393c Mon Sep 17 00:00:00 2001
+From: Bijan Regmi <vizandabijan@gmail.com>
+Date: Sat, 5 Feb 2022 16:30:01 +0545
+Subject: [PATCH] Sticky
+
+---
+ dwm.c | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/dwm.c b/dwm.c
+index 7d0de05..4877b6b 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -51,7 +51,7 @@
+ #define CLEANMASK(mask)         (mask & ~(numlockmask|LockMask) & (ShiftMask|ControlMask|Mod1Mask|Mod2Mask|Mod3Mask|Mod4Mask|Mod5Mask))
+ #define INTERSECT(x,y,w,h,m)    (MAX(0, MIN((x)+(w),(m)->mx+(m)->mw) - MAX((x),(m)->mx)) \
+                                * MAX(0, MIN((y)+(h),(m)->my+(m)->mh) - MAX((y),(m)->my)))
+-#define ISVISIBLE(C)            ((C->tags & C->mon->tagset[C->mon->seltags]))
++#define ISVISIBLE(C)            ((C->tags & C->mon->tagset[C->mon->seltags]) || C->issticky)
+ #define LENGTH(X)               (sizeof X / sizeof X[0])
+ #define MOUSEMASK               (BUTTONMASK|PointerMotionMask)
+ #define WIDTH(X)                ((X)->w + 2 * (X)->bw)
+@@ -107,7 +107,7 @@ struct Client {
+ 	int basew, baseh, incw, inch, maxw, maxh, minw, minh;
+ 	int bw, oldbw;
+ 	unsigned int tags;
+-	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
++	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen, issticky;
+ 	Client *next;
+ 	Client *snext;
+ 	Monitor *mon;
+@@ -247,6 +247,7 @@ static void tag(const Arg *arg);
+ static void tagmon(const Arg *arg);
+ static void togglebar(const Arg *arg);
+ static void togglefloating(const Arg *arg);
++static void togglesticky(const Arg *arg);
+ static void togglefullscr(const Arg *arg);
+ static void toggletag(const Arg *arg);
+ static void toggleview(const Arg *arg);
+@@ -2042,6 +2043,15 @@ togglefullscr(const Arg *arg)
+     setfullscreen(selmon->sel, !selmon->sel->isfullscreen);
+ }
+ 
++void
++togglesticky(const Arg *arg)
++{
++	if (!selmon->sel)
++		return;
++	selmon->sel->issticky = !selmon->sel->issticky;
++	arrange(selmon);
++}
++
+ void
+ toggletag(const Arg *arg)
+ {
+-- 
+2.35.1
+
