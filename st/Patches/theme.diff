@@ -4,13 +4,13 @@ Date: Sun, 6 Feb 2022 00:06:45 +0545
 Subject: [PATCH] Theme
 
 ---
- config.def.h | 22 +++++++++++++++++-----
+ config.h | 22 +++++++++++++++++-----
  1 file changed, 17 insertions(+), 5 deletions(-)
 
-diff --git a/config.def.h b/config.def.h
+diff --git a/config.h b/config.h
 index d61be54..2d35e96 100644
---- a/config.def.h
-+++ b/config.def.h
+--- a/config.h
++++ b/config.h
 @@ -1,4 +1,5 @@
  /* See LICENSE file for copyright and license details. */
 +#define wal "/home/immo/.cache/wal/colors-wal-st.h"

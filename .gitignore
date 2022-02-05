@@ -1,7 +1,21 @@
 polybar/temp_location.ini
 __pycache__/
+
+# mpd local files
 mpd/database
 mpd/pid
 mpd/socket
 mpd/state
 mpd/playlists/*
+
+# st make install files
+st/st
+st/st.o
+st/x.o
+
+# dwm make install files
+dwm/drw.o
+dwm/dwm
+dwm/dwm-msg
+dwm/dwm.o
+dwm/util.o

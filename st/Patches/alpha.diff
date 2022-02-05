@@ -4,16 +4,16 @@ Date: Sat, 5 Feb 2022 22:25:47 +0545
 Subject: [PATCH] Alpha
 
 ---
- config.def.h |  3 +++
+ config.h |  3 +++
  config.mk    |  2 +-
  st.h         |  1 +
  x.c          | 40 ++++++++++++++++++++++++++++++----------
  4 files changed, 35 insertions(+), 11 deletions(-)
 
-diff --git a/config.def.h b/config.def.h
+diff --git a/config.h b/config.h
 index 6f05dce..9abfd06 100644
---- a/config.def.h
-+++ b/config.def.h
+--- a/config.h
++++ b/config.h
 @@ -93,6 +93,9 @@ char *termname = "st-256color";
   */
  unsigned int tabspaces = 8;
