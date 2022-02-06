@@ -1,5 +1,7 @@
-polybar/temp_location.ini
+# Temporary files
 __pycache__/
+.vscode/
+polybar/temp_location.ini
 
 # mpd local files
 mpd/database
@@ -19,3 +21,6 @@ dwm/dwm
 dwm/dwm-msg
 dwm/dwm.o
 dwm/util.o
+
+# Neovim installed plugins
+nvim/autoload
