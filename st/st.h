@@ -96,6 +96,7 @@ void redraw(void);
 void tfulldirt(void);
 void draw(void);
 
+void shiftalpha(const Arg *);
 void newterm(const Arg *);
 void kscrolldown(const Arg *);
 void kscrollup(const Arg *);

@@ -1222,6 +1222,18 @@ tisaltscreen(void)
 }
 
 void
+shiftalpha(const Arg *arg) {
+	if (!arg->f)								// Toggle the alpha
+		alpha = !alpha;
+	else if(arg->f > 0) 						// Increase the alpha value
+        alpha = MIN(1, alpha+arg->f);
+	else 										// Decrease the value
+        alpha = MAX(0, alpha+arg->f);
+    xloadcols();
+    tfulldirt();
+}
+
+void
 kscrolldown(const Arg* a)
 {
 	int n = a->i;
