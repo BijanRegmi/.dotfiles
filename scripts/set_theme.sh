@@ -2,9 +2,9 @@
 set -e
 
 rm -rf ~/.cache/wal/*
-wal -i ~/.wallpapers/wallpaper.jpg
+wal -q -i ~/.wallpapers/wallpaper.jpg
 
 cd ~/.dotfiles/st
-sudo make clean install
+sudo make clean install > /dev/null
 
 # killall dwm
