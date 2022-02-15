@@ -100,9 +100,9 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 // Added by Alpha Patch
-float alpha = 0.5;
+float alpha = 0.7;
 // Added by Alpha-Focus Patch
-float alphaUnfocused = 0;
+float alphaUnfocused = 0.5;
 
 /* Terminal colors (16 first used in escape sequence) */
 #if __has_include(wal)
