@@ -1,4 +1,4 @@
-set -e
+#!/bin/bash
 
 count=$(expr $(ls -a ~/.wallpapers | wc -l) - 4)
 curr=$(cat ~/.wallpapers/.wallpaper)
@@ -10,6 +10,10 @@ fi
 
 if [ $curr -gt $count ]; then
     curr=$(expr $curr - $(expr $count))
+elif [ $curr -eq '0' ]; then
+    curr=$count
+else
+    echo "Curr is: ${curr}"
 fi
 
 name=~/.wallpapers/$curr.jpg
