@@ -119,6 +119,7 @@ static Key keys[] = {
 
 	{ MODKEY,             			XK_w,      	killclient,     {0} },
 	{ MODKEY|ShiftMask,				XK_w,		spawn,			SHCMD("~/.dotfiles/scripts/toggle_bg.sh") },
+	{ MODKEY|ControlMask|ShiftMask, XK_w,		spawn,			SHCMD("st bash -c '~/.dotfiles/scripts/set_theme.sh'")},
 
 	{ MODKEY,						XK_e,		spawn,			SHCMD("rofi -show emoji -modi emoji -font 'JetBrains Mono 10'") },
 
