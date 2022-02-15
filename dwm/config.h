@@ -139,6 +139,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,				XK_o,		setlayout,		{.v = &layouts[9]} }, /* grid */
 	{ MODKEY,						XK_p,		setlayout, 		{.v = &layouts[10]}}, /* nrowgrid */
 	{ MODKEY|ShiftMask,				XK_p,		setlayout,		{.v = &layouts[11]}}, /* horizgrid */
+	{ MODKEY|ControlMask,			XK_p,		spawn,			SHCMD("~/.dotfiles/scripts/toggle_picom.sh")},
 	
 	/* HOME ROW */
 	{ MODKEY,		                XK_a,      	togglegaps,     {0} },
