@@ -14,11 +14,17 @@ alias rmd='rm -rf'				# Remove Directory
 alias srmd='sudo rm -rf'		# Remove Directory as root
 alias cpd='cp -r'				# Copy Directory
 alias cdc='cd ~/Documents/Coding'
+alias cdd='cd ~/.dotfiles/'
 
 alias gtop='LANG=en_US.utf8 TERM=xterm-256color gtop'
 alias r='ranger'
 
 alias cmatrix='neo --color=green2 --shortpct=100 --speed=12 --async -d 1.5 --lingerms=1,1 --rippct=0 --maxdpc=1 --charset=DEVANAGARI'
+
+alias wscan='iwctl station wlan0 scan'
+alias wshow='iwctl station wlan0 show'
+alias wgetn='iwctl station wlan0 get-networks'
+alias wdisc='iwctl station wlan0 disconnect'
 
 reset="\[\033[0m\]"           	# Reset Color
 Red="\[\033[1;31m\]"          	# Bold Red
@@ -53,8 +59,6 @@ export LS_COLORS
 
 # Set default editor
 export EDITOR='nvim'
-
-export PATH=$PATH:/home/$USER/.dotnet
 
 neofetch
 
