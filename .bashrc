@@ -23,7 +23,7 @@ alias cmatrix='neo --color=green2 --shortpct=100 --speed=12 --async -d 1.5 --lin
 
 alias wscan='iwctl station wlan0 scan'
 alias wshow='iwctl station wlan0 show'
-alias wgetn='iwctl station wlan0 get-networks'
+alias wlist='iwctl station wlan0 get-networks'
 alias wdisc='iwctl station wlan0 disconnect'
 
 reset="\[\033[0m\]"           	# Reset Color
@@ -46,6 +46,10 @@ function parse_git_branch() {
 	else
 		echo ""
 	fi
+}
+
+function wconn(){
+    iwctl station wlan0 connect $1
 }
 
 front_arrow="\n$main_col\342\224\214\342\224\200["
