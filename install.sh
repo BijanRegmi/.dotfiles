@@ -21,7 +21,8 @@ function create_links(){
         echo -e "\n$red[!] Old config exists!$reset"
         echo -e "\n$blue[+] Moving them to $2.bak folder$reset"
         mkdir -p $2.bak/
-        mv $2 $2.bak/
+        cp $2 $2.bak/ -L -r
+        rm $2 -rf
     fi
     ln -s $1 $2
     echo -e "\n$green[*] Linking success from $1 to $2$reset"
@@ -44,7 +45,6 @@ function dunst_install(){
     sudo make install
 
     create_links $BASEFULLDIR/dunst ~/.config/dunst
-
     echo -e "\n$green[#] Installation of dunst complete :)$reset"
 }
 
@@ -53,79 +53,27 @@ function nitrogen_install(){
     sudo pacman -S nitrogen
 
     create_links $BASEFULLDIR/nitrogen ~/.config/nitrogen
-
     echo -e "\n$green[#] Installation of nitrogen complete :)$reset"
 }
 
 function st_install(){
-    cd $TMPDIR
-
-    echo -e "\n$blue[+] Downloading st version 0.8.4$reset"
-    wget https://dl.suckless.org/st/st-0.8.4.tar.gz
-
-    echo -e "\n$blue[+] Unziping$reset"
-    tar -xvzf st-0.8.4.tar.gz
-
-    echo -e "\n$blue[+] Applying Patches:$reset"
-    cd st-0.8.4
-    echo -e "\n$yellow[1] Scroll+redraw$reset"
-    patch < ../../st/scroll+redraw.diff
-    echo -e "\n$yellow[2] Alpha/Transparency$reset"
-    patch < ../../st/alpha.diff
-    echo -e "\n$yellow[3] Enable del key$reset"
-    patch < ../../st/delkey.diff
-    echo -e "\n$yellow[4] NewTerm in cwd$reset"
-    patch < ../../st/newterm.diff
-    echo -e "\n$yellow[5] Alpha on focus$reset"
-    patch < ../../st/alpha-focus.diff
-    echo -e "\n$yellow[6] Anybar_fix$reset"
-    patch < ../../st/anybar_fix.diff
+    cd $BASEFULLDIR/st
 
     echo -e "\n$blue[+] Compiling$reset"
-    cp $BASEFULLDIR/st/config.h config.h
     sudo make install
     
     cd $TMPDIR
-
     echo -e "\n$green[#] Installation of st complete :)$reset"
 }
 
 function dwm_install(){
-    cd $TMPDIR
-
-    echo -e "\n$blue[+] Downloading dwm version 6.2$reset"
-    wget https://dl.suckless.org/dwm/dwm-6.2.tar.gz
-
-    echo -e "\n$blue[+] Unziping$reset"
-    tar -xvzf dwm-6.2.tar.gz
-
-    echo -e "\n$blue[+] Applying Patches$reset"
-    cd dwm-6.2
-    echo -e "\n$yellow[1] IPC$reset"
-    patch < ../../dwm/ipc_patch.diff
-    echo -e "\n$yellow[2] VanityGaps$reset"
-    patch < ../../dwm/vanitygaps.diff
-    echo -e "\n$yellow[3] AnyBar$reset"
-    patch < ../../dwm/anybar.diff
-    echo -e "\n$yellow[4] AutoStart$reset"
-    patch < ../../dwm/autostart.diff
-    echo -e "\n$yellow[5] ActualFullScreen$reset"
-    patch < ../../dwm/fullscreen.diff
-    echo -e "\n$yellow[6] StickyClient$reset"
-    patch < ../../dwm/sticky.diff
-    echo -e "\n$yellow[7] AlphaBar$reset"
-    patch < ../../dwm/alpha.diff
-    echo -e "\n$yellow[8] CenterFirstWindow$reset"
-    patch < ../../dwm/centerFirstWindow.diff
+    cd $BASEFULLDIR/dwm
 
     echo -e "\n$blue[+] Compiling$reset"
-    cp $BASEFULLDIR/dwm/config.h config.h
     sudo make install
 
     create_links $BASEFULLDIR/dwm/autostart.sh /home/$USER/.dwm/autostart.sh
-
     cd $TMPDIR
-
     echo -e "\n$green[#] Installation of dwm complete :)$reset"
 }
 
@@ -134,7 +82,6 @@ function rofi_install(){
     sudo pacman -S rofi
 
     create_links $BASEFULLDIR/rofi /home/$USER/.config/rofi
-
     echo -e "\n$green[#] Installation of rofi complete :)$reset"
 }
 
@@ -152,7 +99,6 @@ function nvim_install(){
 
     echo -e "\n$green[+] Working on Plugins:$reset"
     create_links $BASEFULLDIR/nvim /home/$USER/.config/nvim
-
     echo -e "\n$green[#] Installation of neovim complete :)$reset"
 }
 
@@ -161,7 +107,6 @@ function neofetch_install(){
     sudo pacman -S neofetch
 
     create_links $BASEFULLDIR/neofetch /home/$USER/.config/neofetch
-
     echo -e "\n$green[#] Installation of neofetch complete :)$reset"
 }
 
@@ -170,7 +115,6 @@ function picom_install(){
     yay -S picom-ibhagwan-git
 
     create_links $BASEFULLDIR/picom ~/.config/picom
-
     echo -e "\n$green[#] Installation of picom complete :)$reset"
 }
 
@@ -185,10 +129,10 @@ function polybar_install(){
     ./build.sh -d
     
     create_links $BASEFULLDIR/polybar ~/.config/polybar
-
     echo -e "\n$green[#] Installation of polybar complete :)"
 }
 
+# Menu Functions
 highlight () {
     local ch=$1-1
     if [[ ${selections[ch]} == "*" ]]; then
@@ -206,11 +150,13 @@ menu() {
     echo -ne "$prompt"
 }
 
+# Parameters
     options=("st" "dwm" "rofi" "ranger" "neovim" "neofetch" "dunst" "nitrogen" "polybar" "picom" "cleanup")
  selections=(" "  " "   " "    " "      " "      " "        " "     " "        " "       " "     "*")
 install_fxn=(st_install dwm_install rofi_install ranger_install nvim_install neofetch_install dunst_install nitrogen_install polybar_install picom_install cleanup)
-
 prompt="Select components to install. Press enter once done selecting: "
+
+# Main Loop
 menu
 while read ch; do
     echo $ch
@@ -226,6 +172,7 @@ while read ch; do
     prompt="Select components to install. Press enter once done selecting: "
 done
 
+# Execute
 for i in ${!options[@]}; do 
     [[ "${selections[i]}" == "*" ]] && { printf "\n$purple[*] Executing option: %s$reset\n" "${options[i]}";} && ${install_fxn[i]}
 done
