@@ -12,6 +12,7 @@ alias ls='ls -l --color=auto'
 alias ll='ls -la'				# List Hidden Files too
 alias rmd='rm -rf'				# Remove Directory
 alias srmd='sudo rm -rf'		# Remove Directory as root
+alias cp='cp -v'                # Verbose copy
 alias cpd='cp -r'				# Copy Directory
 alias cdc='cd ~/Documents/Coding'
 alias cdd='cd ~/.dotfiles/'

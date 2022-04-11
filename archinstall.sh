@@ -65,12 +65,13 @@ echo "\
 127.0.1.1     $hostname.localdomain   $hostname" >> /etc/hosts
 
 echo -e "${green}Managing users${reset}"
+echo -e "${green}Setting password for root user\n${reset}"
 passwd
 read -p "${red}Enter new username: ${reset}" username
 useradd -mG wheel,audio,video,optical,storage -s /bin/bash $username
 passwd $username
 pacman --noconfirm -S sudo
-echo "%wheel ALL=(ALL)" >> /etc/sudoers
+echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 
 echo -e "${green}Making initramfs${reset}"
 mkinitcpio -P
@@ -86,7 +87,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # Configuring the system
 echo "${green}Configuring wifi${reset}"
 pacman --noconfirm -S broadcom-wl iwd dhcpcd openresolv
-systemctl enable iwd
+systemctl enable iwd dhcpcd
 echo "\
 blacklist bcma
 blacklist b43

@@ -1,4 +1,4 @@
-shutdown="    Shutdown"
+shutdown="⏼    Shutdown"
 reboot="    Reboot"
 sleep="⏾     Sleep"
 logout="    Logout"
