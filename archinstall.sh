@@ -48,7 +48,7 @@ exit
 
 # BEGIN POST_CHROOT
 echo -e "${green}Configuring timezone${reset}"
-ln -sf /usr/share/zoneinfo/Asia/kathmandu /etc/localtime
+ln -sf /usr/share/zoneinfo/Asia/Kathmandu /etc/localtime
 hwclock --systohc
 
 echo -e "${green}Setting locale${reset}"
@@ -56,7 +56,7 @@ echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo "KEYMAP=us" > /etc/vconsole.conf
-
+#-----------------------------------------------------------------------
 read -p "${red}Enter your hostname: ${reset}" hostname
 echo $hostname > /etc/hostname
 echo "\
@@ -64,7 +64,6 @@ echo "\
 ::1           localhost
 127.0.1.1     $hostname.localdomain   $hostname" >> /etc/hosts
 
-echo -e "${green}Managing users${reset}"
 echo -e "${green}Setting password for root user\n${reset}"
 passwd
 read -p "${red}Enter new username: ${reset}" username
@@ -72,7 +71,7 @@ useradd -mG wheel,audio,video,optical,storage -s /bin/bash $username
 passwd $username
 pacman --noconfirm -S sudo
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
-
+#-------------------------------------------------------------------------
 echo -e "${green}Making initramfs${reset}"
 mkinitcpio -P
 
@@ -83,8 +82,7 @@ read -p "${red}Enter efipartition: ${reset}" efipartition
 mount $efipartition /boot/EFI
 grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
-
-# Configuring the system
+#-------------------------------------------------------------------
 echo "${green}Configuring wifi${reset}"
 pacman --noconfirm -S broadcom-wl iwd dhcpcd openresolv
 systemctl enable iwd dhcpcd
@@ -108,5 +106,20 @@ EnableNetworkConfiguration = true
 [Network]
 EnableIPv6 = false
 NameResolvingService = resolvconf" >> /etc/iwd/main.conf
+#---------------------------------------------------------------------------
+echo -e "${green}Installing necessary programs${reset}"
+sudo pacman -S --noconfirm base-devel mesa xf86-video-intel\
+                git cmake ntfs-3g xbindkeys redshift bc\
+                pulseaudio pavucontrol python-pywal
+
+echo -e "${green}Install aur-helper${reset}"
+git clone https://aur.archlinux.org/yay-git.git
+cd yay-git
+makepkg -si
+cd ..
+rm -rf yay-git
+
+yay -S backlight_control
+
 echo -e "${blue}Everything is set you can now restart and proceed to rice${reset}"
 # END POST_CHROOT

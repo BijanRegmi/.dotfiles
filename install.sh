@@ -69,9 +69,13 @@ function st_install(){
 function dwm_install(){
     cd $BASEFULLDIR/dwm
 
+    echo -e "\n$blue[+] Installing dependency$reset"
+    sudo pacman -S -needed yajl noto-fonts-cjk
+
     echo -e "\n$blue[+] Compiling$reset"
     sudo make install
 
+    mkdir -p /home/$USER/.dwm
     create_links $BASEFULLDIR/dwm/autostart.sh /home/$USER/.dwm/autostart.sh
     cd $TMPDIR
     echo -e "\n$green[#] Installation of dwm complete :)$reset"
@@ -79,7 +83,7 @@ function dwm_install(){
 
 function rofi_install(){
     echo -e "\n$blue[+] Installing rofi$reset"
-    sudo pacman -S rofi
+    sudo pacman -S --needed --noconfirm rofi
 
     create_links $BASEFULLDIR/rofi /home/$USER/.config/rofi
     echo -e "\n$green[#] Installation of rofi complete :)$reset"
@@ -87,7 +91,7 @@ function rofi_install(){
 
 function ranger_install(){
     echo -e "\n$blue[+] Installing ranger$reset"
-    sudo pacman -S ranger
+    sudo pacman -S --needed --noconfirm ranger
 
     create_links $BASEFULLDIR/ranger /home/$USER/.config/ranger
     echo -e "\n$green[#] Installation of ranger complete :)$reset"
@@ -95,7 +99,7 @@ function ranger_install(){
 
 function nvim_install(){
     echo -e "\n$blue[+] Installing neovim$reset"
-    sudo pacman -S neovim
+    sudo pacman -S --needed --noconfirm neovim
 
     echo -e "\n$green[+] Working on Plugins:$reset"
     create_links $BASEFULLDIR/nvim /home/$USER/.config/nvim
@@ -104,7 +108,7 @@ function nvim_install(){
 
 function neofetch_install(){
     echo -e "\n$blue[+] Installing neofetch$reset"
-    sudo pacman -S neofetch
+    sudo pacman -S --needed --noconfirm neofetch
 
     create_links $BASEFULLDIR/neofetch /home/$USER/.config/neofetch
     echo -e "\n$green[#] Installation of neofetch complete :)$reset"
