@@ -109,8 +109,7 @@ NameResolvingService = resolvconf" >> /etc/iwd/main.conf
 #---------------------------------------------------------------------------
 echo -e "${green}Installing necessary programs${reset}"
 sudo pacman -S --noconfirm base-devel mesa xf86-video-intel\
-                git cmake ntfs-3g xbindkeys redshift bc\
-                pulseaudio pavucontrol python-pywal
+                git cmake ntfs-3g openssh\
 
 echo -e "${green}Install aur-helper${reset}"
 git clone https://aur.archlinux.org/yay-git.git

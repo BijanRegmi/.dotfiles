@@ -34,6 +34,18 @@ function cleanup(){
     echo -e "\n$green[*] Temporary folders cleaned$reset"
 }
 
+function install_dep(){
+    sudo pacman -S --needed --noconfirm\
+        xorg xbindkeys pulseaudio pavucontrol xbindkeys redshift bc\
+        python-pywal sxiv mpv mpd ncmpcpp youtube-dl flameshot\
+        vscode
+}
+
+function configure_lightdm(){
+    sudo pacman -S --needed --noconfirm lightdm
+    yay -S lightdm-webkit-theme-aether
+}
+
 function dunst_install(){
     cd $TMPDIR
 
@@ -70,7 +82,7 @@ function dwm_install(){
     cd $BASEFULLDIR/dwm
 
     echo -e "\n$blue[+] Installing dependency$reset"
-    sudo pacman -S -needed yajl noto-fonts-cjk
+    sudo pacman -S --needed yajl noto-fonts-cjk
 
     echo -e "\n$blue[+] Compiling$reset"
     sudo make install
@@ -91,7 +103,7 @@ function rofi_install(){
 
 function ranger_install(){
     echo -e "\n$blue[+] Installing ranger$reset"
-    sudo pacman -S --needed --noconfirm ranger
+    sudo pacman -S --needed --noconfirm ranger ueberzug
 
     create_links $BASEFULLDIR/ranger /home/$USER/.config/ranger
     echo -e "\n$green[#] Installation of ranger complete :)$reset"
@@ -126,9 +138,12 @@ function polybar_install(){
     cd $TMPDIR
     
     echo -e "\n$blue[+] Installing polybar-dwm-module fork$reset"
+    echo -e "\n$red[-] If any errors occur please install the dependencies mentioned in the error log.$reset"
     git clone https://github.com/nixenos/polybar-dwm-module
     cd polybar-dwm-module
 
+    echo -e "\n$blue[+] Installing custom module dependencies$reset"
+    sudo pacman -S --needed --noconfirm bc
     echo -e "\n$blue[+] Building$reset"
     ./build.sh -d
     
@@ -155,9 +170,9 @@ menu() {
 }
 
 # Parameters
-    options=("st" "dwm" "rofi" "ranger" "neovim" "neofetch" "dunst" "nitrogen" "polybar" "picom" "cleanup")
- selections=(" "  " "   " "    " "      " "      " "        " "     " "        " "       " "     "*")
-install_fxn=(st_install dwm_install rofi_install ranger_install nvim_install neofetch_install dunst_install nitrogen_install polybar_install picom_install cleanup)
+    options=("st" "dwm" "rofi" "ranger" "neovim" "neofetch" "dunst" "nitrogen" "polybar" "picom" "lightdm" "deps" "cleanup")
+ selections=(" "  " "   " "    " "      " "      " "        " "     " "        " "       " "     " "        " "    "*")
+install_fxn=(st_install dwm_install rofi_install ranger_install nvim_install neofetch_install dunst_install nitrogen_install polybar_install picom_install configure_lightdm install_dep cleanup)
 prompt="Select components to install. Press enter once done selecting: "
 
 # Main Loop
