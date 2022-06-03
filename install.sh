@@ -89,13 +89,30 @@ function dwm_install(){
 
     mkdir -p /home/$USER/.dwm
     create_links $BASEFULLDIR/dwm/autostart.sh /home/$USER/.dwm/autostart.sh
+
+    sudo mkdir -p /var/log/dwm
+    chown -R $USER:$USER /var/log/dwm
+
+    echo '#\!/bin/sh
+filename=$(date +%Y-%m-%d_%H).dwm.log
+echo "$(date): Starting dwm" > /var/log/dwm/${filename}
+dwm >> /var/log/dwm/${filename} 2>&1' | sudo tee /usr/local/bin/startdwm
+
+    echo "\
+[Desktop Entry]
+Encoding=UTF-*
+Name=dwm
+Comment=Dynamic Window Manager
+Exec=dwm
+Type=XSession" | sudo tee /usr/share/xsessions/dwm.desktop
+
     cd $TMPDIR
     echo -e "\n$green[#] Installation of dwm complete :)$reset"
 }
 
 function rofi_install(){
     echo -e "\n$blue[+] Installing rofi$reset"
-    sudo pacman -S --needed --noconfirm rofi
+    sudo pacman -S --needed --noconfirm rofi rofi-calc
 
     create_links $BASEFULLDIR/rofi /home/$USER/.config/rofi
     echo -e "\n$green[#] Installation of rofi complete :)$reset"
