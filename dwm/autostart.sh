@@ -1,15 +1,9 @@
 # Start KeyBindings
 [[ -z $(pgrep "xbindkeys") ]] && xbindkeys&
 
-# Set Background
-nitrogen --restore &
-
 # Redshift for those precious eyes
 redshift -x
 redshift -O 3500 > /dev/null &
-
-# Turn on numlock
-numlockx on &
 
 # Setup Window Compositor
 [[ -z $(pgrep picom) ]] && picom --config ~/.config/picom/picom.conf &
