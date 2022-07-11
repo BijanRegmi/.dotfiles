@@ -20,5 +20,6 @@ set showtabline=2                       " Always show tabs
 set softtabstop=4
 set shiftwidth=4
 set scrolloff=8                         " Number of lines to leave at end
+set termguicolors
 filetype plugin on
-colorscheme wal                         " Set pywal as the colorscheme
+colorscheme nord
