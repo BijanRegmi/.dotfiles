@@ -45,3 +45,8 @@ nnoremap cs :vertical resize 0<CR>                  " 0 columns
 nnoremap <silent> <C-e> :NERDTreeFocus<CR>          " Focus on explorer
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>         " Show/Hide explorer
 nnoremap <silent> <leader>f :NERDTreeFind<CR>       " Reveal in explorer
+
+"Git gutter
+nnoremap ghs <Plug>(GitGutterStageHunk)
+nnoremap ghu <Plug>(GitGutterUndoHunk)
+nnoremap ghp <Plug>(GitGutterPreviewHunk)

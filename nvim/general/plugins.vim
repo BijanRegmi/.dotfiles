@@ -19,5 +19,5 @@ Plug 'ryanoasis/vim-devicons'                                                   
 Plug 'preservim/nerdtree'                                                               " Explorer panel
 Plug 'Xuyuanp/nerdtree-git-plugin'                                                      " Show git status in nerdtree
 Plug 'tpope/vim-fugitive'                                                               " Git plugin
-
+Plug 'airblade/vim-gitgutter'                                                           " Show git diff in sign column
 call plug#end()

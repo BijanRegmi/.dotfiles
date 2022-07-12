@@ -21,5 +21,6 @@ set softtabstop=4
 set shiftwidth=4
 set scrolloff=8                         " Number of lines to leave at end
 set termguicolors
+set updatetime=100
 filetype plugin on
 colorscheme nord
