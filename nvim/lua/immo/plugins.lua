@@ -40,16 +40,34 @@ return packer.startup(function(use)
     use("wbthomason/packer.nvim") -- Manage packer
     use("nvim-lua/plenary.nvim") -- Useful lua functions used by lots of plugins
 
+    -- Bars
     use("vim-airline/vim-airline")
     use("vim-airline/vim-airline-themes")
-
-    use('arcticicestudio/nord-vim')
-    use('ryanoasis/vim-devicons')
-
     use({
         'akinsho/bufferline.nvim',
         tag = "v2.*"
     })
+
+    -- Styling
+    use('arcticicestudio/nord-vim')
+    use('ryanoasis/vim-devicons')
+    use({
+        'nvim-treesitter/nvim-treesitter',
+        run = ":TSUpdate"
+    }) -- Syntax highlighting
+
+    -- LSP
+    use('neovim/nvim-lspconfig')
+    use('williamboman/nvim-lsp-installer')
+
+    -- Formatter
+    use('jose-elias-alvarez/null-ls.nvim')
+
+    -- Autocompletion
+    use('hrsh7th/nvim-cmp')
+    use('hrsh7th/cmp-nvim-lsp')
+    use('L3MON4D3/LuaSnip')
+    use('onsails/lspkind-nvim')
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()
