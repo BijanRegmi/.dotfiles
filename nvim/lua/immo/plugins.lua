@@ -37,8 +37,8 @@ packer.init({
 
 return packer.startup(function(use)
 
-    use("wbthomason/packer.nvim")           -- Manage packer
-    use("nvim-lua/plenary.nvim")            -- Useful lua functions used by lots of plugins
+    use("wbthomason/packer.nvim") -- Manage packer
+    use("nvim-lua/plenary.nvim") -- Useful lua functions used by lots of plugins
 
     use("vim-airline/vim-airline")
     use("vim-airline/vim-airline-themes")
@@ -46,6 +46,10 @@ return packer.startup(function(use)
     use('arcticicestudio/nord-vim')
     use('ryanoasis/vim-devicons')
 
+    use({
+        'akinsho/bufferline.nvim',
+        tag = "v2.*"
+    })
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()
