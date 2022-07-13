@@ -29,9 +29,18 @@ local settings = {
     backspace = {"indent", "eol", "start"},
     cursorline = false,                     -- Disbale cursor line
     signcolumn = "yes",                     -- Enable sign column everytime
-    termguicolors = true                    -- Enable terminal colors
+    termguicolors = true,                   -- Enable terminal colors
 }
 
 for key, value in pairs(settings) do
     vim.opt[key] = value
 end
+
+vim.cmd [[
+try
+  colorscheme nord
+catch /^Vim\%((\a\+)\)\=:E185/
+  colorscheme default
+  set background=dark
+endtry
+]]
