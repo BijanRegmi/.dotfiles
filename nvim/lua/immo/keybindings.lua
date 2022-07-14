@@ -53,7 +53,7 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", options) -- Reduce column si
 -- Explorer
 keymap('n', "<C-e>", ":NvimTreeFocus<CR>", options)
 keymap('n', "<C-b>", ":NvimTreeToggle<CR>", options)
-peymap('n', "<C-f>", ":Telescope find_files<CR>", options)
+keymap('n', "<C-f>", ":Telescope find_files<CR>", options)
 
 -- Git
 keymap('n', "gbl", ":Gitsigns blame_line<CR>", options)
