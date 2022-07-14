@@ -1,6 +1,7 @@
 -- nvim-cmp
 local cmp = require('cmp')
 local luasnip = require('luasnip')
+local lspkind = require('lspkind')
 
 -- better autocompletion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -43,12 +44,12 @@ cmp.setup {
     formatting = {
         fields = {"kind", "abbr", "menu"},
         format = function(entry, vim_item)
-            vim_item.kind = string.format("%s", icons[vim_item.kind])
-            vim_item.menu = ({
-                nvim_lsp = "[LSP]",
-                luasnip = "[Snippet]"
-            })[entry.source.name]
-            return vim_item
+            local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+            local strings = vim.split(kind.kind, "%s", { trimempty = true })
+
+            kind.kind = "[" .. strings[1] .. "]"
+            kind.menu = "(" .. strings[2] .. ")"
+            return kind
         end
     },
     mapping = {

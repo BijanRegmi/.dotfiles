@@ -48,6 +48,10 @@ return packer.startup(function(use)
         tag = "v2.*"
     })
 
+    -- Explorer
+    use({"kyazdani42/nvim-tree.lua",requires = {"kyazdani42/nvim-web-devicons"},tag = 'nightly'})
+    use({'nvim-telescope/telescope.nvim', tag = '0.1.0'})
+
     -- Styling
     use('arcticicestudio/nord-vim')
     use('ryanoasis/vim-devicons')
@@ -55,6 +59,7 @@ return packer.startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         run = ":TSUpdate"
     }) -- Syntax highlighting
+    use('lewis6991/gitsigns.nvim')
 
     -- LSP
     use('neovim/nvim-lspconfig')

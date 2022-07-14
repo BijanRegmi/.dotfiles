@@ -49,3 +49,20 @@ keymap("n", "<C-Up>", ":resize +2<CR>", options) -- Expand row size
 keymap("n", "<C-Down>", ":resize -2<CR>", options) -- Reduce row size
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", options) -- Expand column size
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", options) -- Reduce column size
+
+-- Explorer
+keymap('n', "<C-e>", ":NvimTreeFocus<CR>", options)
+keymap('n', "<C-b>", ":NvimTreeToggle<CR>", options)
+peymap('n', "<C-f>", ":Telescope find_files<CR>", options)
+
+-- Git
+keymap('n', "gbl", ":Gitsigns blame_line<CR>", options)
+keymap('n', "ghp", ":Gitsigns preview_hunk<CR>", options)
+keymap('n', "gnh", ":Gitsigns next_hunk<CR>", options)
+keymap('n', "gph", ":Gitsigns prev_hunk<CR>", options)
+keymap('n', "gdt", ":Gitsigns diffthis<CR>", options)
+keymap('n', "gsh", ":Gitsigns stage_hunk<CR>", options)
+keymap('n', "grh", ":Gitsigns reset_hunk<CR>", options)
+keymap('n', "grb", ":Gitsigns reset_buffer<CR>", options)
+keymap('n', "guh", ":Gitsigns undo_stage_hunk<CR>", options)
+keymap('n', "gsb", ":Gitsigns stage_buffer<CR>", options)
