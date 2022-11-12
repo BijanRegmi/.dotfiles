@@ -1,0 +1,22 @@
+{
+    "battery": {
+        "interval": 10,
+        "bat": "BAT1",
+        "adapter": "ACAD",
+        "format": "{icon}{capacity}%",
+        "format-time": "{H}h {M}min",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "tooltip": true,
+        "tooltip-format": "{timeTo}"
+    }
+}

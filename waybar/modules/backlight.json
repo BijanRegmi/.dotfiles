@@ -1,0 +1,12 @@
+{
+    "backlight": {
+        "interval": 1,
+        "format": "{percent: >3}%",
+        "states": {
+            "notnormal": 30
+        },
+        "on-scroll-up": "brightnessctl set +1%",
+        "on-scroll-down": "brightnessctl set 1%-",
+        "tooltip": false
+    }
+}

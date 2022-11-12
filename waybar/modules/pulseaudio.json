@@ -1,0 +1,17 @@
+{
+    "pulseaudio": {
+        "format": "{icon}{volume: >3}%",
+        "format-muted": "Mute",
+        "format-icons": [
+            "奄",
+            "奔",
+            "墳"
+        ],
+        "states": {
+            "medium": 50,
+            "high": 80
+        },
+        "scroll-step": 5.0,
+        "on-click-right": "pavucontrol"
+    }
+}

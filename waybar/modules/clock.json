@@ -1,0 +1,12 @@
+{
+	"clock": {
+        "interval": 1,
+        "timezone": "Asia/Kathmandu",
+		"format": " {:%H:%M}",
+		"format-alt": "{:%b %d}",
+        "tooltip-format": "<span size='larger' color='#ffffff'>{:%Y %B}</span>\n<tt><span size='smaller'>{calendar}</span></tt>",
+		"today-format": "<span color='#ffffff'><b><i>{}</i></b></span>",
+        "format-calendar": "<span color='#aaaaaa'>{}</span>",
+        "format-calendar-weekdays": "<span color='#dddddd'>{}</span>"
+	}
+}

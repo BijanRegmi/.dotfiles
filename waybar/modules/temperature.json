@@ -1,0 +1,16 @@
+{
+    "temperature": {
+        "interval": 3,
+        "thermal-zone": 0,
+        "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon5/temp2_input",
+        "format": "{icon}{temperatureC: >3}°C",
+        "format-icons": [
+            "",
+            "",
+            ""
+        ],
+        "critical-threshold": 80,
+        "tooltip": true,
+        "tooltip-format": "Celcius: {temperatureC}°C\nFarhenhite: {temperatureF}°F\nKelvin: {temperatureK}K"
+    }
+}
