@@ -3,7 +3,7 @@ __pycache__/
 .vscode/
 
 # Neovim installed plugins
-nvim/plugin
+.config/nvim/plugin
 
 # lazygit state
-lazygit/state.yml
+.config/lazygit/state.yml
