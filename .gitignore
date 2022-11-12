@@ -1,26 +1,9 @@
 # Temporary files
 __pycache__/
 .vscode/
-polybar/temp_location.ini
-
-# mpd local files
-mpd/database
-mpd/pid
-mpd/socket
-mpd/state
-mpd/playlists/*
-
-# st make install files
-st/st
-st/st.o
-st/x.o
-
-# dwm make install files
-dwm/drw.o
-dwm/dwm
-dwm/dwm-msg
-dwm/dwm.o
-dwm/util.o
 
 # Neovim installed plugins
 nvim/plugin
+
+# lazygit state
+lazygit/state.yml
