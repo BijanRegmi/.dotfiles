@@ -1,0 +1,9 @@
+normal_window=false
+mode=dmenu
+stylesheet=./style.css
+
+orientation=vertical
+
+matching=fuzzy
+insensitive=true
+prompt=Select mode

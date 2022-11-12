@@ -1,0 +1,14 @@
+normal_window=false
+mode=dmenu
+
+stylesheet=./powermenu/style.css
+width=1px
+
+orientation=vertical
+content_halign=center
+
+matching=fuzzy
+insensitive=true
+prompt=Sayonara Senpai?
+allow_markup=true
+

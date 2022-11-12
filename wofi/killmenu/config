@@ -1,0 +1,11 @@
+normal_window=false
+mode=dmenu
+stylesheet=./style.css
+
+orientation=vertical
+
+line_wrap=word
+
+matching=fuzzy
+insensitive=true
+prompt=Kasle niu khojya, maardim?

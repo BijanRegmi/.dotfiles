@@ -1,0 +1,9 @@
+@import "/home/immo/.config/wofi/style.css";
+
+label {
+	font-size: 1.1rem;
+}
+
+#input {
+	font-size: 0.99rem;
+}

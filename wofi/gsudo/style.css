@@ -1,0 +1,5 @@
+@import "/home/immo/.config/wofi/style.css";
+
+#inner-box {
+	opacity: 0;
+}

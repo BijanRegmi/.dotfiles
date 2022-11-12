@@ -1,0 +1,11 @@
+normal_window=false
+mode=dmenu
+stylesheet=./gsudo/style.css
+
+orientation=vertical
+
+height=10%
+width=30%
+
+password=*
+prompt=Enter sudo password

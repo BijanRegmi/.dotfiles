@@ -1,0 +1,8 @@
+normal_window=false
+mode=dmenu
+
+orientation=vertical
+
+matching=fuzzy
+insensitive=true
+prompt=Search for network...
