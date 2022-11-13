@@ -1,7 +1,7 @@
 #!/bin/bash
 xway=$(hyprctl activewindow | awk '/xwayland:/{print $2}')
 if [ $xway == "1" ]; then
-    hyprctl keyword 'general:col.active_border' 0xffff0000
+	notify-send -u critical "Checkxway" "Running Xwayland"
 else
-    hyprctl keyword 'general:col.active_border' 0xffbbbbbb
+	notify-send "Checkxway" "Running wayland"
 fi
