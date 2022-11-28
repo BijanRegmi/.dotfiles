@@ -7,6 +7,31 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
+require("mason").setup({
+    ui = {
+        check_outdated_servers_on_open = true,
+        border = "none",
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗",
+        },
+        keymaps = {
+            toggle_server_expand = "<CR>",
+            install_server = "i",
+            update_server = "u",
+            check_server_version = "c",
+            update_all_servers = "U",
+            check_outdated_servers = "C",
+            uninstall_server = "X"
+        }
+    },
+})
+
+require("mason-lspconfig").setup({
+    automatic_installation = true,
+})
+
 local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')

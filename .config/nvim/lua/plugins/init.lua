@@ -106,72 +106,48 @@ return packer.startup(function(use)
 
     ------------------
     -- Intellisense --
-    ------------------
-    use {
-        ---------
-        -- LSP --
-        ---------
-        {
-            'williamboman/nvim-lsp-installer',
-            after = 'nvim-lspconfig',
-            config = 'require "plugins.LSP.installer"'
+		------------------
+    use({
+        "williamboman/mason.nvim",
+        requires = {
+            "williamboman/mason-lspconfig.nvim",
         },
-        {
-            'neovim/nvim-lspconfig',
-            event = 'BufEnter'
-        },
-        {
-            'hrsh7th/cmp-nvim-lsp',
-            opt = true,
-            after = 'nvim-lspconfig',
-            config = 'require "plugins.LSP.lspconfig"'
-        },
-        --------------------
-        -- Autocompletion --
-        --------------------
-        {
-            'onsails/lspkind-nvim',
-            opt = true,
-            after = 'nvim-lspconfig',
+    })
 
-        },
-        {
-            'L3MON4D3/LuaSnip',
-            opt = true,
-            after = 'lspkind-nvim'
-        },
-        {
-            'hrsh7th/nvim-cmp',
-            opt = true,
-            after = 'LuaSnip',
-            config = 'require "plugins.autocompletion"'
+    use({
+        "neovim/nvim-lspconfig",
+        opt = true,
+        event = "BufReadPre",
+        config = 'require "plugins.LSP.lspconfig"',
+    })
 
+
+    use({
+        "hrsh7th/nvim-cmp",
+        event = "InsertEnter",
+        config = 'require "plugins.autocompletion"',
+        requires = {
+            { "hrsh7th/cmp-nvim-lsp" },
+						{ "onsails/lspkind-nvim" },
+						{ "L3MON4D3/LuaSnip" },
+            { "rafamadriz/friendly-snippets" },
         },
-        ---------------
-        -- Formatter --
-        ---------------
-        {
-            'jose-elias-alvarez/null-ls.nvim',
-            config = 'require "plugins.formatter"'
-        },
-        {
-            'windwp/nvim-autopairs',
-            after = 'nvim-cmp',
-            config = 'require "plugins.autopairs"'
-        },
-        ----------------
-        -- Commenting --
-        ----------------
-        {
-            'JoosepAlviste/nvim-ts-context-commentstring',
-            after = 'nvim-treesitter'
-        },
-        {
-            'numToStr/Comment.nvim',
-            after = 'nvim-ts-context-commentstring',
-            config = 'require "plugins.comment"'
-        },
-    }
+    })
+
+    use({
+        "windwp/nvim-autopairs",
+        after = "nvim-cmp",
+        config = 'require "plugins.autopairs"',
+    })
+
+		
+
+    use({
+        "jose-elias-alvarez/null-ls.nvim",
+        opt = true,
+        event = "BufReadPost",
+        config = 'require "plugins.formatter"',
+    })
 
     -- Trackers
     use {
@@ -201,6 +177,8 @@ return packer.startup(function(use)
 
     use "elkowar/yuck.vim"
     use "bhurlow/vim-parinfer"
+
+	use "https://git.sr.ht/~p00f/cphelper.nvim"
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()

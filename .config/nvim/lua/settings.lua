@@ -10,9 +10,9 @@ local settings = {
 
     autoindent = true,                      -- Automatice indentation
     smartindent = true,
-    shiftwidth = 4,                         -- Number of spaces inserted for each indentation
+    shiftwidth = 2,                         -- Number of spaces inserted for each indentation
     expandtab = false,                       -- Convert tabs to spaces
-    tabstop = 4,                            -- Number of spaces for tab
+    tabstop = 2,                            -- Number of spaces for tab
     showtabline = 2,                        -- Always show tabs
     softtabstop = 4,
 

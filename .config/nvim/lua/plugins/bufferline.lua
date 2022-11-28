@@ -16,11 +16,11 @@ require('bufferline').setup {
         left_trunc_marker = '',
         right_trunc_marker = '',
         name_formatter = function(buf)
-            return vim.fn.fnamemodify(buf.path, ':p:.')
+            return vim.fn.fnamemodify(buf.path, ':p:t')
         end,
-        max_name_length = 40,
+        max_name_length = 20,
         max_prefix_length = 15,
-        tab_size = 18,
+        tab_size = 10,
         diagnostics = false,
         diagnostics_update_in_insert = false,
         diagnostics_indicator = function(count, level, diagnostics_dict, context)

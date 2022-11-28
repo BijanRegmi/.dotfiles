@@ -3,6 +3,29 @@ local cmp = require('cmp')
 local luasnip = require('luasnip')
 local lspkind = require('lspkind')
 
+require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/" })
+luasnip.config.setup({ store_selection_keys = "<A-p>" })
+
+vim.cmd([[command! LuaSnipEdit :lua require("luasnip.loaders.from_lua").edit_snippet_files()]])
+
+local types = require("luasnip.util.types")
+luasnip.config.set_config({
+	history = true, --keep around last snippet local to jump back
+	updateevents = "TextChanged,TextChangedI", --update changes as you type
+	enable_autosnippets = true,
+	ext_opts = {
+		[types.choiceNode] = {
+			active = {
+				virt_text = { { "●", "GruvboxOrange" } },
+			},
+		},
+	},
+})
+
+
+vim.keymap.set("n", "<Leader><CR>", "<cmd>LuaSnipEdit<cr>", { silent = true, noremap = true })
+vim.cmd([[autocmd BufEnter */snippets/*.lua nnoremap <silent> <buffer> <CR> /-- End Refactoring --<CR>O<Esc>O]])
+
 -- better autocompletion experience
 vim.o.completeopt = 'menuone,noselect'
 
@@ -90,11 +113,10 @@ cmp.setup {
             luasnip.lsp_expand(args.body)
         end
     },
-    sources = {{
-        name = 'nvim_lsp'
-    }, {
-        name = 'luasnip'
-    }},
+    sources = {
+			{ name = 'nvim_lsp' },
+			{ name = 'luasnip' },
+		},
     window = {
         documentation = {
             border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}
