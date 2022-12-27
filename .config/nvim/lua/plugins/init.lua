@@ -138,14 +138,6 @@ return packer.startup(function(use)
     })
 
 		
-
-    use({
-        "jose-elias-alvarez/null-ls.nvim",
-        opt = true,
-        event = "BufReadPost",
-        config = 'require "plugins.formatter"',
-    })
-    
 		use({
         "numToStr/Comment.nvim",
 				config = 'require "plugins.comment"',
@@ -155,10 +147,6 @@ return packer.startup(function(use)
     use {
         {'wakatime/vim-wakatime'},
         {'dstein64/vim-startuptime'},
-        {
-            'andweeb/presence.nvim',
-            event = 'BufEnter',
-        }
     }
 
     use {
@@ -177,10 +165,11 @@ return packer.startup(function(use)
         config = 'require "plugins.toggleterm"'
     }
 
-    use "elkowar/yuck.vim"
-    use "bhurlow/vim-parinfer"
 
-	use "https://git.sr.ht/~p00f/cphelper.nvim"
+	use {
+		  "https://git.sr.ht/~p00f/cphelper.nvim",
+		  cmd = {"Cph*"}
+  }
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()

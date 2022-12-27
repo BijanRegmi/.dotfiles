@@ -71,5 +71,5 @@ keymap('n', "guh", ":Gitsigns undo_stage_hunk<CR>", options)
 keymap('n', "gsb", ":Gitsigns stage_buffer<CR>", options)
 
 -- Formatter
-keymap('n', "<leader>f", "<Cmd>lua vim.lsp.buf.formatting()<CR>", options)
+keymap('n', "<leader>f", "<Cmd>lua vim.lsp.buf.format({ async = true })<CR>", options)
 keymap('v', "<leader>f", "<Cmd>lua vim.lsp.buf.range_formatting()<CR>", options)
