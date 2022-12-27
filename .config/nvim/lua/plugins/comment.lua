@@ -39,7 +39,7 @@ require('Comment').setup({
         extended = false,
     },
     ---Function to call before (un)comment
-    pre_hook = function(ctx)
+    --[[pre_hook = function(ctx)
         local U = require "Comment.utils"
 
         local location = nil
@@ -53,7 +53,7 @@ require('Comment').setup({
             key = ctx.ctype == U.ctype.line and "__default" or "__multiline",
             location = location,
         }
-    end,
+    end,--]]
     ---Function to call after (un)comment
     post_hook = nil,
 })

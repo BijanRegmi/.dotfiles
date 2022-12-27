@@ -148,6 +148,11 @@ return packer.startup(function(use)
         event = "BufReadPost",
         config = 'require "plugins.formatter"',
     })
+    
+		use({
+        "numToStr/Comment.nvim",
+				config = 'require "plugins.comment"',
+    })
 
     -- Trackers
     use {

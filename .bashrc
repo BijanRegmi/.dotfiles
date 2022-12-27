@@ -75,9 +75,6 @@ _cdc_complete() {
 
 complete -o nospace -F _cdc_complete cdc
 
-# Set default editor
-export EDITOR='nvim'
-
 neofetch
 
 
