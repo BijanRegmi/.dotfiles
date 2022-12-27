@@ -48,21 +48,18 @@ return packer.startup(function(use)
     -- Bars --
     ----------
     use {
-        {
-            "vim-airline/vim-airline",
-            event = 'BufEnter',
-            after = 'nord-vim',
-            requires = {
-                'vim-airline/vim-airline-themes',
-                after = 'vim-airline'
-            },
-            config = 'require "plugins.airline"',
-        },
+				{
+						'nvim-lualine/lualine.nvim',
+						event = 'BufEnter',
+						after = 'nord-vim',
+						requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+						config = 'require "plugins.lualine"',
+				},
         {
             'akinsho/bufferline.nvim',
             tag = "v2.*",
             event = 'BufEnter',
-            after = 'vim-airline',
+            after = 'lualine.nvim',
             config = 'require "plugins.bufferline"',
         }
     }
