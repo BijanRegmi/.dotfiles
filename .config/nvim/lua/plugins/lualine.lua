@@ -2,7 +2,7 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'nord',
-    component_separators = { left = '', right = ''},
+    component_separators = '',
     section_separators = { left = '', right = ''},
     disabled_filetypes = {
       statusline = {},
@@ -20,10 +20,10 @@ require('lualine').setup {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_c = {{'filename', path=1}},
+    lualine_x = {{'encoding', fmt=string.upper}, 'filetype'},
+		lualine_y = {'progress', 'location'},
+		lualine_z = {{'diagnostics', sources={'nvim_diagnostic'}}}
   },
   inactive_sections = {
     lualine_a = {},
@@ -36,5 +36,5 @@ require('lualine').setup {
   tabline = {},
   winbar = {},
   inactive_winbar = {},
-  extensions = {}
+  extensions = {'nvim-tree', 'toggleterm'}
 }

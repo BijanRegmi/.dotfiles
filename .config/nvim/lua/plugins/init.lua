@@ -52,7 +52,7 @@ return packer.startup(function(use)
 						'nvim-lualine/lualine.nvim',
 						event = 'BufEnter',
 						after = 'nord-vim',
-						requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+						requires = { 'kyazdani42/nvim-web-devicons' },
 						config = 'require "plugins.lualine"',
 				},
         {
