@@ -1,7 +1,9 @@
 #!/bin/bash
 
-count=$(expr $(ls -a ~/.wallpapers | wc -l) - 4)
-curr=$(cat ~/.wallpapers/.wallpaper)
+folder=$(cut -d/ -f1 ~/.wallpapers/.current)
+curr=$(cut -d/ -f2 ~/.wallpapers/.current)
+count=$(ls ~/.wallpapers/$folder | wc -l)
+
 if [[ $1 -eq '1' ]]; then
     curr=$(expr $curr + 1)
 else
@@ -16,13 +18,15 @@ else
     echo "Curr is: ${curr}"
 fi
 
-name=~/.wallpapers/$curr.jpg
+name=~/.wallpapers/$folder/$curr.jpg
 
 cp $name ~/.wallpapers/wallpaper.jpg
 
-if [ pidof hyprpaper ]; then
+if pidof hyprpaper; then
     pkill hyprpaper
 fi
-hyprpaper&
+hyprpaper > /dev/null 2>&1 &
 
-echo $curr > ~/.wallpapers/.wallpaper
+notify-send "Wallpaper Updated" "$folder: [ $curr / $count ]" -r 69
+
+echo $folder/$curr > ~/.wallpapers/.current
