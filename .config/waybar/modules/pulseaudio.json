@@ -11,7 +11,7 @@
             "medium": 50,
             "high": 80
         },
-        "scroll-step": 5.0,
+        "scroll-step": 1.0,
         "on-click-right": "pavucontrol"
     }
 }

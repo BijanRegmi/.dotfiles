@@ -108,6 +108,10 @@ return packer.startup(function(use)
         "williamboman/mason.nvim",
         requires = {
             "williamboman/mason-lspconfig.nvim",
+						{
+								"jose-elias-alvarez/null-ls.nvim",
+								config = 'require "plugins.formatter"'
+						},
         },
     })
 
@@ -117,6 +121,7 @@ return packer.startup(function(use)
         event = "BufReadPre",
         config = 'require "plugins.LSP.lspconfig"',
     })
+
 
 
     use({

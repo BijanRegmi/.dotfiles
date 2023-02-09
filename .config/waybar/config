@@ -1,18 +1,18 @@
 {
 	"output": ["eDP-1", "HDMI-A-1"],
-    "layer": "top",
+  "layer": "top",
 	"position": "top",
 	"height": "4%",
 	"width": "70%",
 	"spacing": 0,
 	"exclusive": true,
-    "ipc": true,
-    "fixed-center": false,
+  "ipc": true,
+  "fixed-center": false,
 	"modules-left": ["wlr/workspaces"],
 	"modules-center": ["wlr/taskbar"],
 	"modules-right": [
-        "network#speed",
-        "network",
+    "network#speed",
+    "network",
 		"cpu",
 		"temperature",
 		"memory",
@@ -20,7 +20,7 @@
 		"pulseaudio",
 		"battery",
 		"clock",
-        "tray"
+    "tray"
 	],
 	"include": [
 		"~/.config/waybar/modules/workspaces.json",
