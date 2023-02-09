@@ -1,0 +1,18 @@
+{
+	"output": ["eDP-1", "HDMI-A-1"],
+  "layer": "top",
+	"position": "top",
+	"height": "4%",
+	"width": "70%",
+	"spacing": 0,
+	"exclusive": true,
+  "ipc": false,
+  "fixed-center": false,
+	"modules-left": ["wlr/workspaces"],
+	"modules-center": [],
+	"modules-right": ["memory"],
+	"include": [
+		"~/.config/waybar/modules/workspaces.json",
+		"~/.config/waybar/modules/memory.json"
+	]
+}

@@ -1,0 +1,32 @@
+* {
+	font-family: monospace, monospace;
+}
+
+window#waybar {
+	background-color: #000;
+}
+
+#workspaces button.active {
+	color: #d8dee9;
+}
+
+#workspaces button.urgent {
+	color: #bf616a;
+}
+
+#workspaces button:hover {
+	color: #2e3440;
+}
+
+#memory {
+	color: white;
+}
+
+#memory.warning {
+	color: red;
+}
+
+#memory.critical {
+	color: white;
+	background: red;
+}

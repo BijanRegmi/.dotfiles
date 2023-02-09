@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+if [ "$1" = "disable" ]; then
+		# HYPRLAND
+		hyprctl reload
+		# HYPRPAPER
+		hyprpaper &
+		# WAYBAR
+		killall waybar
+		waybar &
+elif [ "$1" = "enable" ]; then
+		# HYPRLAND
+		hyprctl --batch "keyword decoration:rounding 0;keyword decoration:blur false;keyword animations:enabled 0"
+		# HYPRPAPER
+		killall hyprpaper
+		# WAYBAR
+		killall waybar
+		waybar --config ~/.config/waybar/config_focus --style ~/.config/waybar/style_focus.css &
+else
+		echo "usage: $0 [disable | enable]"
+fi
