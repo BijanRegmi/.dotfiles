@@ -76,8 +76,8 @@ cmp.setup {
         end
     },
     mapping = {
-        -- Use Tab and shift-Tab to navigate autocomplete menu
-        ["<Tab>"] = cmp.mapping(function(fallback)
+        -- Use Alt-j and Alt-k to navigate autocomplete menu because tabs and ctrl+i get mixed up
+        ["<A-j>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
             elseif luasnip.expandable() then
@@ -90,7 +90,7 @@ cmp.setup {
                 fallback()
             end
         end, {"i", "s"}),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
+        ["<A-k>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
             elseif luasnip.jumpable(-1) then
@@ -103,7 +103,7 @@ cmp.setup {
             behavior = cmp.ConfirmBehavior.Replace,
             select = true
         },
-        ["<C-i>"] = cmp.mapping {
+        ["<A-l>"] = cmp.mapping {
             i = cmp.mapping.abort(),
             c = cmp.mapping.close()
         }

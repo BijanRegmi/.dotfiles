@@ -175,6 +175,7 @@ return packer.startup(function(use)
 		  "https://git.sr.ht/~p00f/cphelper.nvim",
 		  cmd = {"Cph*"}
   }
+  use {'stevearc/dressing.nvim'}
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()
