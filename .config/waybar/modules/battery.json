@@ -3,7 +3,7 @@
         "interval": 10,
         "bat": "BAT1",
         "adapter": "ACAD",
-        "format": "{icon}{capacity}%",
+        "format": "{icon} {capacity: >3}%",
         "format-time": "{H}h {M}min",
         "format-icons": [
             "",

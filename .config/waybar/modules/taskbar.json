@@ -1,11 +1,11 @@
 {
 	"wlr/taskbar": {
 		"format": "{name}",
-        "all-outputs": true,
+		"all-outputs": true,
 		"icon-size": 14,
 		"tooltip-format": "{title}",
 		"on-click": "activate",
 		"on-click-middle": "close",
-        "on-double-click": "fullscreen"
+		"on-double-click": "fullscreen"
 	}
 }

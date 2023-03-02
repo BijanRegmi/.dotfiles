@@ -1,7 +1,7 @@
 {
     "backlight": {
         "interval": 1,
-        "format": "{percent: >3}%",
+        "format": " {percent: >3}%",
         "states": {
             "notnormal": 30
         },
