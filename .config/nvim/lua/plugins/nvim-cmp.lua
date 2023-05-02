@@ -80,7 +80,7 @@ return {
                         { trimempty = true })
 
                     kind.kind = "[" .. (strings[1] or "") .. "]"
-                    kind.menu = "(" .. (strings[2] or "") .. ")"
+                    kind.menu = (icons[strings[2]] or "") .. " " .. (strings[2] or "")
                     return kind
                 end
             },
@@ -123,59 +123,13 @@ return {
             },
             sources = { { name = 'nvim_lsp' }, { name = 'luasnip' } },
             window = {
-                documentatformatting = {
-                    fields = { "kind", "abbr", "menu" },
-                    format = function(entry, vim_item)
-                        local kind = lspkind.cmp_format({
-                            mode = "symbol_text",
-                            maxwidth = 50
-                        })(entry, vim_item)
-                        local strings = vim.split(kind.kind, "%s",
-                            { trimempty = true })
-
-                        kind.kind = "[" .. (strings[1] or "") .. "]"
-                        kind.menu = "(" .. (strings[2] or "") .. ")"
-                        return kind
-                    end
-                },
-                mapping = {
-                    ["<A-j>"] = cmp.mapping(function(fallback)
-                        if cmp.visible() then
-                            cmp.select_next_item()
-                        elseif luasnip.expandable() then
-                            luasnip.expand()
-                        elseif luasnip.expand_or_jumpable() then
-                            luasnip.expand_or_jump()
-                        elseif check_backspace() then
-                            fallback()
-                        else
-                            fallback()
-                        end
-                    end, { "i", "s" }),
-                    ["<A-k>"] = cmp.mapping(function(fallback)
-                        if cmp.visible() then
-                            cmp.select_prev_item()
-                        elseif luasnip.jumpable(-1) then
-                            luasnip.jump(-1)
-                        else
-                            fallback()
-                        end
-                    end, { "i", "s" }),
-                    ['<CR>'] = cmp.mapping.confirm {
-                        behavior = cmp.ConfirmBehavior.Replace,
-                        select = true
-                    },
-                    ["<A-l>"] = cmp.mapping {
-                        i = cmp.mapping.abort(),
-                        c = cmp.mapping.close()
-                    }
-                },
-                ion = {
-                    border = {
-                        "╭", "─", "╮", "│", "╯", "─", "╰", "│"
-                    }
-                }
-            }
+                completion = cmp.config.window.bordered({
+                    border = "rounded",
+                }),
+                documentation = cmp.config.window.bordered({
+                    border = "rounded"
+                }),
+            },
         }
     end
 }

@@ -19,10 +19,12 @@ return {
                 custom_only = false,
                 list = {
                     { key = { "l", "<CR>", "o" }, action = "edit" },
-                    { key = "h",                action = "close_node" },
-                    { key = "v",                action = "vsplit" },
-                    { key = "?",                action = "toggle_help" },
-                    { key = "<C-e>",            action = "close" }
+                    { key = "<C-l>",              action = "cd" },
+                    { key = "<C-h>",              action = "dir_up" },
+                    { key = "h",                  action = "close_node" },
+                    { key = "v",                  action = "vsplit" },
+                    { key = "?",                  action = "toggle_help" },
+                    { key = "<C-e>",              action = "close" }
                 }
             }
         },

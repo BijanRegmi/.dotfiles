@@ -8,13 +8,12 @@ return {
             opts = { automatic_installation = true }
         }, 'cmp-nvim-lsp'
     },
-    config = function(_, opts)
+    config = function()
         local lsp_config = require("lspconfig")
+        require("lspconfig.ui.windows").default_options.border = "rounded"
 
-        local servers = {
-            'bashls', 'clangd', 'cmake', 'cssls', 'eslint', 'html', 'jsonls',
-            'marksman', 'pylsp', 'tsserver', 'prismals', 'tailwindcss', 'lua_ls'
-        }
+
+        local servers = require("mason-lspconfig").get_installed_servers()
 
         local on_attach = function(client, bufnr)
             vim.api.nvim_buf_set_option(bufnr, 'omnifunc',
@@ -39,7 +38,7 @@ return {
         capabilities =
             require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-        for _, server in pairs(servers) do
+        for _, server in ipairs(servers) do
             local opts = { on_attach = on_attach, capabilities = capabilities }
 
             -- Load additional settings if its available
