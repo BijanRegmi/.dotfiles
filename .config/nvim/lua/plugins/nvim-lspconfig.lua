@@ -37,9 +37,13 @@ return {
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities =
             require('cmp_nvim_lsp').default_capabilities(capabilities)
+        local handlers = {
+            ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+            ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
+        }
 
         for _, server in ipairs(servers) do
-            local opts = { on_attach = on_attach, capabilities = capabilities }
+            local opts = { on_attach = on_attach, capabilities = capabilities, handlers = handlers }
 
             -- Load additional settings if its available
             local available, options = pcall(require,
