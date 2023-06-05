@@ -4,6 +4,6 @@ return {
     dependencies = { "mason.nvim" },
     opts = function()
         local formatting = require("null-ls").builtins.formatting
-        return { debug = true, sources = { formatting.prettier } }
+        return { debug = true, sources = { formatting.prettier, formatting.black } }
     end
 }

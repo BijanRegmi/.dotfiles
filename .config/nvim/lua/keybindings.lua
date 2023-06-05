@@ -26,6 +26,7 @@ keymap('n', "<leader>n", ":BufferLineMoveNext<CR>", options) -- Move current buf
 keymap('n', "<leader>p", ":BufferLineMovePrev<CR>", options) -- Move current buffer to left
 keymap('n', "<leader>w", ":bd<CR>", options)                 -- Close current buffer
 keymap('n', "<leader>g", ":BufferLinePick<CR>", options)     -- Pick a buffer to go to
+keymap('n', "<leader>o", ":only<CR>", options)               -- Show only this buffer
 keymap('n', "<leader>1", "<Cmd>BufferLineGoToBuffer 1<CR>", options)
 keymap('n', "<leader>2", "<Cmd>BufferLineGoToBuffer 2<CR>", options)
 keymap('n', "<leader>3", "<Cmd>BufferLineGoToBuffer 3<CR>", options)

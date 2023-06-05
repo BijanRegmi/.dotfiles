@@ -36,32 +36,43 @@ return {
 
         vim.o.completeopt = 'menuone,noselect'
 
+        local signs = {
+            { name = "DiagnosticSignError", text = "" },
+            { name = "DiagnosticSignWarn",  text = "" },
+            { name = "DiagnosticSignHint",  text = "" },
+            { name = "DiagnosticSignInfo",  text = "" },
+        }
+
+        for _, sign in ipairs(signs) do
+            vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+        end
+
         local icons = {
-            Text = "",
-            Method = "m",
-            Function = "",
-            Constructor = "",
-            Field = "",
-            Variable = "",
-            Class = "",
+            Text = "",
+            Method = "󰆧",
+            Function = "󰊕",
+            Constructor = "",
+            Field = "󰇽",
+            Variable = "󰂡",
+            Class = "󰠱",
             Interface = "",
             Module = "",
-            Property = "",
+            Property = "󰜢",
             Unit = "",
-            Value = "",
+            Value = "󰎠",
             Enum = "",
-            Keyword = "",
-            Snippet = "",
-            Color = "",
-            File = "",
+            Keyword = "󰌋",
+            Snippet = "",
+            Color = "󰏘",
+            File = "󰈙",
             Reference = "",
-            Folder = "",
+            Folder = "󰉋",
             EnumMember = "",
-            Constant = "",
+            Constant = "󰏿",
             Struct = "",
             Event = "",
-            Operator = "",
-            TypeParameter = ""
+            Operator = "󰆕",
+            TypeParameter = "󰅲",
         }
 
         local check_backspace = function()
@@ -74,12 +85,13 @@ return {
                 format = function(entry, vim_item)
                     local kind = lspkind.cmp_format({
                         mode = "symbol_text",
-                        maxwidth = 50
+                        maxwidth = 50,
+                        preset = "codicons"
                     })(entry, vim_item)
                     local strings = vim.split(kind.kind, "%s",
                         { trimempty = true })
 
-                    kind.kind = "[" .. (strings[1] or "") .. "]"
+                    kind.kind = strings[1] or " "
                     kind.menu = (icons[strings[2]] or "") .. " " .. (strings[2] or "")
                     return kind
                 end
