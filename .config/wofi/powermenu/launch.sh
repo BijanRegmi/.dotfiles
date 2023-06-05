@@ -1,8 +1,8 @@
 #!/bin/bash
-shutdown="<span size='0.001pt'>Shutdown</span>⏼"
-reboot="<span size='0.001pt'>Reboot</span>"
+shutdown="<span size='0.001pt'>Shutdown</span>󰐥"
+reboot="<span size='0.001pt'>Reboot</span>"
 sleep="<span size='0.001pt'>Sleep</span>⏾"
-logout="<span size='0.001pt'>Logout</span>"
+logout="<span size='0.001pt'>Logout</span>󰗽"
 lock="<span size='0.001pt'>Lock</span>"
 
 actions="$shutdown\n$reboot\n$sleep\n$logout\n$lock"
