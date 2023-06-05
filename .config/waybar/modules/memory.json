@@ -1,7 +1,7 @@
 {
     "memory": {
         "interval": 1,
-        "format": " {percentage: >3}%",
+        "format": " {used:.2f}GiB/{total:.2f}GiB",
         "states": {
             "warning": 70,
             "critical": 90

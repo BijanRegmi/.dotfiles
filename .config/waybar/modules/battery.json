@@ -6,15 +6,11 @@
         "format": "{icon} {capacity: >3}%",
         "format-time": "{H}h {M}min",
         "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
+                            "",
+                            "",
+                            "",
+                            "",
+                            ""
         ],
         "tooltip": true,
         "tooltip-format": "{timeTo}"

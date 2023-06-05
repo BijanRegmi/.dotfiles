@@ -1,11 +1,11 @@
 {
     "pulseaudio": {
         "format": "{icon} {volume: >3}%",
-        "format-muted": "Mute",
+        "format-muted": " {volume: >3}%",
         "format-icons": [
-            "奄",
-            "奔",
-            "墳"
+            " ",
+            " ",
+            " "
         ],
         "states": {
             "medium": 50,
