@@ -90,14 +90,14 @@ return {
             compile_directory = ".",
             compile_command = {
                 c = { exec = "gcc", args = { "-Wall", "$(FNAME)", "-o", "$(FNOEXT)" } },
-                cpp = { exec = "g++", args = { "-Wall", "$(FNAME)", "-o", "$(FNOEXT)" } },
+                cpp = { exec = "g++", args = { "-Wall", "$(FNAME)", "-o", "$(FNOEXT).out" } },
                 rust = { exec = "rustc", args = { "$(FNAME)" } },
                 java = { exec = "javac", args = { "$(FNAME)" } },
             },
             running_directory = ".",
             run_command = {
                 c = { exec = "./$(FNOEXT)" },
-                cpp = { exec = "./$(FNOEXT)" },
+                cpp = { exec = "./$(FNOEXT).out" },
                 rust = { exec = "./$(FNOEXT)" },
                 python = { exec = "python", args = { "$(FNAME)" } },
                 java = { exec = "java", args = { "$(FNOEXT)" } },
@@ -108,7 +108,7 @@ return {
             view_output_diff = false,
 
             testcases_directory = "./testcases",
-            testcases_use_single_file = true,
+            testcases_use_single_file = false,
             testcases_auto_detect_storage = true,
             testcases_single_file_format = "$(FNOEXT).testcases",
             testcases_input_file_format = "$(FNOEXT)_input$(TCNUM).txt",
