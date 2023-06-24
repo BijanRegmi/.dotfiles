@@ -78,8 +78,8 @@ keymap('n', "<leader>f", "<Cmd>lua vim.lsp.buf.format({ async = true })<CR>", op
 keymap('v', "<leader>f", "<Cmd>lua vim.lsp.buf.range_formatting()<CR>", options)
 
 -- Competitest
-keymap('n', "<leader>c", "<Cmd>CompetiTestRun<CR>", options)
-keymap('n', "<leader>r", "<Cmd>CompetiTestReceive problem<CR>", options)
+keymap('n', "<leader>cmr", "<Cmd>CompetiTestRun<CR>", options)
+keymap('n', "<leader>cmp", "<Cmd>CompetiTestReceive problem<CR>", options)
 
 -- Diagnostics
 vim.keymap.set('n', '<space>d', vim.diagnostic.open_float, options)
