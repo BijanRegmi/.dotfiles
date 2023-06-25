@@ -126,7 +126,10 @@ return {
                 ["<A-l>"] = cmp.mapping {
                     i = cmp.mapping.abort(),
                     c = cmp.mapping.close()
-                }
+                },
+                ["<A-i>"] = cmp.mapping {
+                    i = cmp.mapping.complete()
+                },
             },
             snippet = {
                 expand = function(args)

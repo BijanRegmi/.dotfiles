@@ -42,8 +42,6 @@ return {
             ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
         }
 
-        lsp_config['dartls'].setup({ on_attach = on_attach, capabilities = capabilities, handlers = handlers })
-
         for _, server in ipairs(servers) do
             local opts = { on_attach = on_attach, capabilities = capabilities, handlers = handlers }
 
