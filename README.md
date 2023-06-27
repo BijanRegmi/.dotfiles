@@ -1,0 +1,3 @@
+```
+stow -t /home/$USER/ .
+```

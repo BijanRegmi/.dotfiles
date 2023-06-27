@@ -56,8 +56,8 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", options)  -- Expand column si
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", options) -- Reduce column size
 
 -- Explorer
-keymap('n', "<C-e>", ":NvimTreeFocus<CR>", options)
-keymap('n', "<C-b>", ":NvimTreeToggle<CR>", options)
+keymap('n', "<C-e>", ":NvimTreeToggle<CR>", options)
+-- keymap('n', "<C-b>", ":NvimTreeToggle<CR>", options)
 keymap('n', "<C-f>", ":Telescope find_files<CR>", options)
 keymap('n', "<C-g>", ":Telescope live_grep<CR>", options)
 
