@@ -1,17 +1,14 @@
 {
-    "pulseaudio": {
-        "format": "{icon} {volume: >3}%",
-        "format-muted": " {volume: >3}%",
-        "format-icons": [
-            " ",
-            " ",
-            " "
-        ],
-        "states": {
-            "medium": 50,
-            "high": 80
-        },
-        "scroll-step": 1.0,
-        "on-click-right": "pavucontrol"
-    }
+  "pulseaudio": {
+    "format": "{icon}{volume}%",
+    "format-muted": "󰝟 {volume}%",
+    "format-icons": [" ", " ", " "],
+    "states": {
+      "low": 50,
+      "medium": 80,
+      "high": 100
+    },
+    "scroll-step": 1.0,
+    "on-click-right": "pavucontrol"
+  }
 }

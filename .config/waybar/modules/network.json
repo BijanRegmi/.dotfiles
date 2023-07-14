@@ -1,19 +1,13 @@
 {
-    "network": {
-        "interface": "wlan0",
-        "interval": 60,
-        "family": "ipv4",
-        "format": " ",
-        "tooltip": true,
-        "tooltip-format": "Connected: {essid}\nIP: {ipaddr}",
-        "tooltip-format-disconnected": "Disconnected"
-    },
-    "network#speed": {
-        "interface": "wlan0",
-        "interval": 1,
-        "family": "ipv4",
-        "format": "{bandwidthDownBytes}",
-        "tooltip": true,
-        "tooltip-format": "Download: {bandwidthDownBytes}\nUpload: {bandwidthUpBytes}"
-    }
+  "network": {
+    "interface": "wlan0",
+    "interval": 1,
+    "family": "ipv4",
+    "format": "󰤨 {bandwidthDownBytes:>}",
+    "format-disconnected": "󰤭 Down",
+    "tooltip": true,
+    "tooltip-format": "Connected: {essid}\nIP: {ipaddr}",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 11
+  }
 }

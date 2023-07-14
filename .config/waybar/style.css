@@ -1,158 +1,158 @@
 * {
-	font-family: monospace, monospace;
+  font-family: monospace, monospace;
+  border: none;
+  border-radius: 0;
 }
 
 window#waybar {
-	background-color: #2e3440;
+  background-color: #1f2335;
 }
 
 #workspaces button {
-	color: #4c566a;
-}
-
-#workspaces button.active {
-	color: #d8dee9;
-}
-
-#workspaces button.urgent {
-	color: #bf616a;
+  color: #3b4261;
+  box-shadow: none;
 }
 
 #workspaces button:hover {
-	color: #2e3440;
+  background: #292e42;
+  box-shadow: none;
+  color: transparent;
+}
+
+#workspaces button.active {
+  color: #a9b1d6;
+}
+
+#workspaces button.urgent {
+  color: #f7768e;
 }
 
 #taskbar button {
-	color: #4c566a;
-}
-
-#taskbar button.active {
-	color: #d8dee9;
+  color: #3b4261;
 }
 
 #taskbar button:hover {
-	color: #2e3440;
+  background: #292e42;
+  box-shadow: none;
+  color: transparent;
+}
+
+#taskbar button.active {
+  color: #a9b1d6;
+  border-bottom: 1px #c0caf5 solid;
 }
 
 #network {
-	color: green;
-	background-color: #3b4252;
-	padding: 0px 5px;
-	border-top-right-radius: 10px;
-	border-top-left-radius: 10px;
-	border-bottom: 3px solid #88c0d0;
-	margin: 0px 4px;
+  color: #a9b1d6;
+  padding: 0px 5px;
+  border-bottom: 1px solid #41a6b5;
+  margin: 0px 4px;
 }
 
 #network.disconnected {
-	color: red;
-}
-
-#network.speed {
-	color: #d8dee9;
+  color: red;
+  padding: 0px 5px;
+  border-bottom: 1px solid #db4b4b;
+  margin: 0px 4px;
 }
 
 #cpu {
-	color: white;
-	background-color: #3b4252;
-	padding: 0px 5px;
-	border-top-right-radius: 10px;
-	border-top-left-radius: 10px;
-	border-bottom: 3px solid #ebcb8b;
-	margin: 0px 4px;
+  color: #a9b1d6;
+  padding: 0px 5px;
+  border-bottom: 1px solid #7dcfff;
+  margin: 0px 4px;
 }
 
 #temperature {
-	color: white;
-	background-color: #3b4252;
-	padding: 0px 5px;
-	border-top-right-radius: 10px;
-	border-top-left-radius: 10px;
-	border-bottom: 3px solid #ebcb8b;
-	margin: 0px 4px;
+  color: #c0caf5;
+  padding: 0px 5px;
+  border-bottom: 1px solid #73daca;
+  margin: 0px 4px;
 }
 
 #temperature.critical {
-	border-bottom: 3px solid #bf616a;
+  border-bottom: 1px solid #db4b4b;
 }
 
 #memory {
-	color: white;
-	background-color: #3b4252;
-	padding: 0px 5px;
-	border-top-right-radius: 10px;
-	border-top-left-radius: 10px;
-	border-bottom: 3px solid #a3be8c;
-	margin: 0px 4px;
+  color: #c0caf5;
+  padding: 0px 5px;
+  border-bottom: 1px solid #1abc9c;
+  margin: 0px 4px;
 }
 
-#memory.warning {
-	border-bottom: 3px solid #b48ead;
+#memory.low {
+  border-bottom: 1px solid #1abc9c;
 }
 
-#memory.critical {
-	border-bottom: 3px solid #bf616a;
+#memory.medium {
+  border-bottom: 1px solid #73daca;
+}
+
+#memory.high {
+  border-bottom: 1px solid #f7768e;
 }
 
 #backlight {
-	color: white;
-	background-color: #3b4252;
-	padding: 0px 5px;
-	border-top-right-radius: 10px;
-	border-top-left-radius: 10px;
-	border-bottom: 3px solid #ebcb8b;
-	margin: 0px 4px;
-}
-
-#backlight.notnormal {
-	border-bottom: 3px solid #d08770;
+  color: #c0caf5;
+  padding: 0px 5px;
+  border-bottom: 1px solid #e0af68;
+  margin: 0px 4px;
 }
 
 #pulseaudio {
-	color: white;
-	background-color: #3b4252;
-	padding: 0px 5px;
-	border-top-right-radius: 10px;
-	border-top-left-radius: 10px;
-	border-bottom: 3px solid #8fbcbb;
-	margin: 0px 4px;
+  color: #c0caf5;
+  padding: 0px 5px;
+  border-bottom: 1px solid #8fbcbb;
+  margin: 0px 4px;
+}
+
+#pulseaudio.low {
+  border-bottom: 1px solid #e0af68;
 }
 
 #pulseaudio.medium {
-	border-bottom: 3px solid #a3be8c;
+  border-bottom: 1px solid #73daca;
 }
 
 #pulseaudio.high {
-	border-bottom: 3px solid #bf616a;
+  border-bottom: 1px solid #f7768e;
 }
 
 #battery {
-	color: white;
-	background-color: #3b4252;
-	padding: 0px 5px;
-	border-top-right-radius: 10px;
-	border-top-left-radius: 10px;
-	margin: 0px 4px;
+  color: #c0caf5;
+  padding: 0px 5px;
+  margin: 0px 4px;
 }
 
 #battery.full {
-	border-bottom: 3px solid #a3be8c;
+  border-bottom: 1px solid #73daca;
+}
+
+#battery.warning {
+  border-bottom: 1px solid #db4b4b;
 }
 
 #battery.discharging {
-	border-bottom: 3px solid #bf616a;
+  border-bottom: 1px dashed #ff9e64;
 }
 
 #battery.charging {
-	border-bottom: 3px solid #5e81ac;
+  border-bottom: 1px dashed #9ece6a;
 }
 
 #clock {
-	color: white;
-	background-color: #3b4252;
-	padding: 0px 5px;
-	border-top-right-radius: 10px;
-	border-top-left-radius: 10px;
-    border-bottom: 3px solid white;
-	margin: 0px 4px;
+  color: #c0caf5;
+  padding: 0px 5px;
+  border-bottom: 1px solid #9d7cd8;
+  margin: 0px 4px;
+}
+
+#mpris {
+  color: #c0caf5;
+  border-bottom: 1px solid #9d7cd8;
+}
+
+#mpris.stopped {
+  opacity: 0;
 }

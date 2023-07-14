@@ -1,12 +1,13 @@
 {
-    "memory": {
-        "interval": 1,
-        "format": " {used:.2f}GiB/{total:.2f}GiB",
-        "states": {
-            "warning": 70,
-            "critical": 90
-        },
-        "tooltip": true,
-        "tooltip-format": "Ram: {used:.2f}GiB / {total:.2f}\nSwap: {swapUsed:.2f}GiB / {swapTotal:.2f}GiB"
-    }
+  "memory": {
+    "interval": 1,
+    "format": " {used:.2f}GiB",
+    "states": {
+      "low": 0,
+      "medium": 50,
+      "high": 80
+    },
+    "tooltip": true,
+    "tooltip-format": "Ram: {used:.2f}GiB / {total:.2f}\nSwap: {swapUsed:.2f}GiB / {swapTotal:.2f}GiB"
+  }
 }

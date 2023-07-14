@@ -1,18 +1,12 @@
 {
-    "temperature": {
-        "interval": 3,
-        "thermal-zone": 0,
-        "hwmon-path": "/sys/devices/virtual/thermal/thermal_zone0/hwmon1/temp1_input",
-        "format": "{icon}{temperatureC: >3}°C",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ],
-        "critical-threshold": 80,
-        "tooltip": true,
-        "tooltip-format": "Celcius: {temperatureC}°C\nFarhenhite: {temperatureF}°F\nKelvin: {temperatureK}K"
-    }
+  "temperature": {
+    "interval": 3,
+    "thermal-zone": 0,
+    "hwmon-path": "/sys/devices/virtual/thermal/thermal_zone0/hwmon1/temp1_input",
+    "format": "{icon}{temperatureC: >3}°C",
+    "format-icons": ["", "", "", "", ""],
+    "critical-threshold": 80,
+    "tooltip": true,
+    "tooltip-format": "Celcius: {temperatureC}°C\nFarhenhite: {temperatureF}°F\nKelvin: {temperatureK}K"
+  }
 }

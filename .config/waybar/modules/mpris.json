@@ -1,0 +1,18 @@
+{
+  "mpris": {
+    "format": "{player_icon} {status_icon} {title:<}",
+    "max-length": 30,
+    "player-icons": {
+      "default": "▶",
+      "firefox": "",
+      "mpv": "🎵",
+      "spotify": " "
+    },
+    "status-icons": {
+      "playing": "▶",
+      "paused": "󰏤",
+      "stopped": "󰓛"
+    },
+    "interval": 2
+  }
+}

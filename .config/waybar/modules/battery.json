@@ -1,18 +1,17 @@
 {
-    "battery": {
-        "interval": 10,
-        "bat": "BAT1",
-        "adapter": "ACAD",
-        "format": "{icon} {capacity: >3}%",
-        "format-time": "{H}h {M}min",
-        "format-icons": [
-                            "",
-                            "",
-                            "",
-                            "",
-                            ""
-        ],
-        "tooltip": true,
-        "tooltip-format": "{timeTo}"
-    }
+  "battery": {
+    "interval": 10,
+    "bat": "BAT1",
+    "adapter": "ACAD",
+    "states": {
+      "warning": 20,
+      "full": 100
+    },
+    "format": "{icon} {capacity: >3}%",
+    "format-full": "{icon} {capacity: >4}%",
+    "format-time": "{H}h {M}min",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip": true,
+    "tooltip-format": "{timeTo}"
+  }
 }
