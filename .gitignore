@@ -2,8 +2,8 @@
 __pycache__/
 .vscode/
 
-# Neovim installed plugins
-.config/nvim/plugin
+# Neovim lazy lock
+.config/nvim/lazy-lock.json
 
 # lazygit state
 .config/lazygit/state.yml

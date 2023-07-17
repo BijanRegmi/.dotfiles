@@ -1,47 +1,50 @@
 * {
-    font-family: "Hack Nerd Font Mono", monospace;
-	border: 0;
-	margin: 0;
-	padding: 0;
+  font-family: "Hack Nerd Font Mono", monospace;
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
 
 #window {
-	background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 #outer-box {
-	background-color: #2e3440;
-	border: 3px solid #eceff4;
-	border-radius: 10px;
-	padding: 10px;
+  background-color: #1f2335;
+  border: 3px solid #3d59a1;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 #input {
-	padding: 10px;
-	color: #8fbcbb;
-	font-size: 1.5rem;
-	background-color: inherit;
-	border: 1px solid #4c566a;
+  padding: 10px;
+  color: #7aa2f7;
+  font-size: 1.5rem;
+  background-color: inherit;
+  border-radius: 0;
+  border-bottom: 1px solid #7aa2f7;
+}
+
+#input:focus {
+  box-shadow: none;
 }
 
 #inner-box {
-	margin: 10px 1px;
+  margin: 10px 1px;
 }
 
 #entry {
-	padding: calc(65px / 5 - 4px);
-	background-color: #2e3440;
-	border: 1px solid #81a1c1;
-	border-radius: 4px;
-	margin: 4px 0px;
-	color: #8fbcbb;
+  padding: calc(65px / 5 - 4px);
+  margin: 4px 0px;
+  color: #a9b1d6;
+  outline: none;
 }
 
 #entry:selected {
-	background-color: #3b4252;
-	color: #8fbcbb;
+  background-color: transparent;
+  color: #7aa2f7;
 }
 
 label:selected {
-	color: #8fbcbb;
+  color: #7aa2f7;
 }
