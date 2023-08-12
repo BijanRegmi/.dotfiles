@@ -21,7 +21,7 @@ local settings = {
     -- Convert tabs to spaces
     expandtab = true,
     -- Number of spaces for tab
-    tabstop = 8,
+    tabstop = 4,
     -- Always show tabs
     showtabline = 2,
     softtabstop = 0,
@@ -59,24 +59,3 @@ end
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
-    callback = function(data)
-        local real_file = vim.fn.filereadable(data.file) == 1
-        local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
-
-        local nvimTreeApi = require("nvim-tree.api")
-
-        if real_file or no_name then
-            nvimTreeApi.tree.toggle({ focus = false, find_file = true })
-            return
-        end
-
-        local directory = vim.fn.isdirectory(data.file) == 1
-        if directory then
-            vim.cmd.cd(data.file)
-            nvimTreeApi.tree.toggle({ focus = false, find_file = true })
-            return
-        end
-    end
-})

@@ -5,6 +5,8 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {
         sort_by = "case_sensitive",
+        disable_netrw = true,
+        sync_root_with_cwd = true,
         view = {
             adaptive_size = false,
             centralize_selection = false,

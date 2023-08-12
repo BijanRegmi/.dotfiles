@@ -13,3 +13,13 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup('plugins', { ui = { border = 'rounded' } })
+
+-- Change cwd when openin a directory
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
+    callback = function(data)
+        local directory = vim.fn.isdirectory(data.file) == 1
+        if directory then
+            vim.cmd.cd(data.file)
+        end
+    end
+})
