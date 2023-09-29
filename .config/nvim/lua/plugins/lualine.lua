@@ -4,7 +4,7 @@ return {
     opts = {
         options = {
             icons_enabled = true,
-            theme = 'tokyonight',
+            theme = require('settings').colorscheme,
             component_separators = '',
             section_separators = { left = '', right = '' },
             disabled_filetypes = { statusline = {}, winbar = {} },

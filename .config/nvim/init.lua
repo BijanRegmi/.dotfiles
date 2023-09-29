@@ -1,4 +1,4 @@
-require "settings"
+local settings = require "settings"
 require "keybindings"
 
 -- Install lazy.nvim if it is not installed
@@ -23,3 +23,5 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
         end
     end
 })
+
+vim.cmd.colorscheme(settings.colorscheme)
