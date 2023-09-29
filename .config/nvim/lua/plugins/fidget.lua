@@ -1,5 +1,6 @@
 return {
     "j-hui/fidget.nvim",
+    tag = "legacy",
     dependencies = { "nvim-lspconfig" },
     lazy = false,
     config = function()
