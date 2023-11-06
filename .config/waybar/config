@@ -8,7 +8,7 @@
   "exclusive": true,
   "ipc": true,
   "fixed-center": false,
-  "modules-left": ["wlr/workspaces"],
+  "modules-left": ["hyprland/workspaces"],
   "modules-center": ["wlr/taskbar"],
   "modules-right": [
     "mpris",

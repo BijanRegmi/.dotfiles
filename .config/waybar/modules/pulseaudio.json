@@ -2,7 +2,7 @@
   "pulseaudio": {
     "format": "{format_source}{icon}{volume}%",
     "format-source-muted": " ",
-    "format-muted": "󰝟 {volume}%",
+    "format-muted": "{format_source}󰝟 {volume}%",
     "format-icons": [" ", " ", " "],
     "states": {
       "low": 50,
@@ -10,6 +10,8 @@
       "high": 100
     },
     "scroll-step": 1.0,
-    "on-click-right": "pavucontrol"
+    "on-click-right": "pavucontrol",
+    "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
   }
 }
