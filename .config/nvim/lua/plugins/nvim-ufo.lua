@@ -34,7 +34,7 @@ return {
         filetype_exclude = { 'help', 'alpha', 'dashboard', 'neo-tree', 'Trouble', 'lazy', 'mason' },
         fold_virt_text_handler = handler,
         provider_selector = function(bufnr, filetype, buftype)
-            return { 'lsp', 'treesitter' }
+            return { 'lsp', 'indent' }
         end
     },
     config = function(_, opts)
@@ -45,33 +45,20 @@ return {
                 require('ufo').detach()
             end,
         })
-        vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-        vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-        vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
-        vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
-        vim.keymap.set('n', 'zp', function()
-            local winid = require('ufo').peekFoldedLinesUnderCursor()
-            if not winid then
-                vim.lsp.buf.hover()
-            end
-        end)
+        local keybinding = require("keybindings")
+        keybinding.register_keymap('n', "zR", { require("ufo").openAllFolds, desc = "Open all folds" })
+        keybinding.register_keymap('n', "zM", { require('ufo').closeAllFolds, desc = "Close all folds" })
+        keybinding.register_keymap('n', "zr", { require('ufo').openFoldsExceptKinds, desc = "Open fold except" })
+        keybinding.register_keymap('n', "zm", { require('ufo').closeFoldsWith, desc = "Close folds with" }) -- closeAllFolds == closeFoldsWith(0)
+        keybinding.register_keymap('n', "zp", {
+            function()
+                local winid = require('ufo').peekFoldedLinesUnderCursor()
+                if not winid then
+                    vim.lsp.buf.hover()
+                end
+            end,
+            desc = "Peek fold"
+        })
         require('ufo').setup(opts)
     end,
 }
---[[ require('ufo').setup({ ]]
---[[     open_fold_hl_timeout = 150, ]]
---[[     close_fold_kinds = { 'imports', 'comment' }, ]]
---[[     preview = { ]]
---[[         win_config = { ]]
---[[             border = { '', '─', '', '', '', '─', '', '' }, ]]
---[[             winhighlight = 'Normal:Folded', ]]
---[[             winblend = 0 ]]
---[[         }, ]]
---[[         mappings = { ]]
---[[             scrollU = '<C-u>', ]]
---[[             scrollD = '<C-d>', ]]
---[[             jumpTop = '[', ]]
---[[             jumpBot = ']' ]]
---[[         } ]]
---[[     }, ]]
---[[ }) ]]

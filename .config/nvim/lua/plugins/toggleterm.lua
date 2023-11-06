@@ -40,7 +40,6 @@ return {
 
         function _lazygit_toggle() lazygit:toggle() end
 
-        vim.api.nvim_set_keymap('n', "<C-l>", ":lua _lazygit_toggle()<CR>",
-            { noremap = true, silent = true })
+        require("keybindings").register_keymap('n', "<C-l>", { _lazygit_toggle, desc = "Toggle lazygit" })
     end
 }

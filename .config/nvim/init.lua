@@ -1,5 +1,6 @@
 local settings = require "settings"
-require "keybindings"
+local keybindings = require "keybindings"
+keybindings.setup()
 
 -- Install lazy.nvim if it is not installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
