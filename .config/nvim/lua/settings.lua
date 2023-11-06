@@ -50,7 +50,8 @@ local settings = {
     termguicolors = true,
     mouse = 'a',
     foldenable = true,
-    foldmethod = "indent"
+    foldlevel = 99,      -- set high foldlevel for nvim-ufo
+    foldlevelstart = 99, -- start with all code unfolded
 }
 
 for key, value in pairs(settings) do
