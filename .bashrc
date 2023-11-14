@@ -10,10 +10,7 @@ alias araara=sudo
 
 alias ls='ls -l --color=auto'
 alias ll='ls -la'				# List Hidden Files too
-alias rmd='rm -rf'				# Remove Directory
-alias srmd='sudo rm -rf'		# Remove Directory as root
 alias cp='cp -v'                # Verbose copy
-alias cpd='cp -r'				# Copy Directory
 alias cdd='cd ~/.dotfiles/'
 
 alias gtop='LANG=en_US.utf8 TERM=xterm-256color gtop'
@@ -26,6 +23,7 @@ alias wscan='iwctl station wlan0 scan'
 alias wshow='iwctl station wlan0 show'
 alias wlist='iwctl station wlan0 get-networks'
 alias wdisc='iwctl station wlan0 disconnect'
+alias wconn='iwctl station wlan0 connect'
 
 reset="\[\033[0m\]"           	# Reset Color
 Red="\[\033[1;31m\]"          	# Bold Red
@@ -49,10 +47,6 @@ function parse_git_branch() {
 	fi
 }
 
-function wconn(){
-    iwctl station wlan0 connect $1
-}
-
 front_arrow="\n$main_col\342\224\214\342\224\200["
 bridge="$main_col]\342\224\200["
 bottom_arrow="$main_col\342\224\224\342\224\200\342\224\200>"
@@ -63,8 +57,9 @@ LS_COLORS='rs=0:di=01;36:ln=01;37:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:c
 export LS_COLORS
 
 export ANDROID_HOME='~/Android/Sdk'
+export BUN_INSTALL="$HOME/.bun"
 
-export PATH=$PATH:~/.local/bin/:~/.cargo/bin/:/opt/flutter/bin:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/emulator:$ANDROID_HOME/tools/:$ANDROID_HOME/tools/bin/
+export PATH=$PATH:~/.local/bin/:~/.cargo/bin/:/opt/flutter/bin:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/emulator:$ANDROID_HOME/tools/:$ANDROID_HOME/tools/bin/:$BUN_INSTALL/bin:~/go/bin
 
 cdc() {
     cd $HOME/Documents/Coding/$1
@@ -83,3 +78,7 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ "$TERM" =~ xterm ]] && [[
     exec tmux
 fi
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

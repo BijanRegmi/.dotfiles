@@ -28,7 +28,7 @@ function M.register_keymap(mode, keymap, options)
     end
 
     local cmd = options
-    local keymap_opts = {}
+    local keymap_opts = { noremap = true, silent = false }
     if type(options) == "table" then
         cmd = options[1]
         keymap_opts = vim.tbl_deep_extend("force", keymap_opts, options)
