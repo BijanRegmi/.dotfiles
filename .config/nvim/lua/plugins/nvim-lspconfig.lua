@@ -24,7 +24,7 @@ return {
             register_keymap('n', 'gd', { vim.lsp.buf.definition, buffer = bufnr, desc = "Go to definition", })
             register_keymap('n', 'K', { vim.lsp.buf.hover, buffer = bufnr, desc = "View docs" })
             register_keymap('n', 'gi', { vim.lsp.buf.implementation, buffer = bufnr, desc = "Go to implementation" })
-            register_keymap('n', '<C-k>', { vim.lsp.buf.signature_help, buffer = bufnr, desc = "Signature help" })
+            register_keymap('i', '<C-k>', { vim.lsp.buf.signature_help, buffer = bufnr, desc = "Signature help" })
             register_keymap('n', '<space>D',
                 { vim.lsp.buf.type_definition, buffer = bufnr, desc = "Go to type definition" })
             register_keymap('n', '<space>rn', { vim.lsp.buf.rename, buffer = bufnr, desc = "Rename symbol" })

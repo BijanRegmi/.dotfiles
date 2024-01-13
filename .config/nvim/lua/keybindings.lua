@@ -139,10 +139,6 @@ function M.setup()
     M.register_keymap('n', '<space>d', { vim.diagnostic.open_float, desc = "View diagnostic" })
     M.register_keymap('n', '[d', { vim.diagnostic.goto_prev, desc = "Go to next diagnostic" })
     M.register_keymap('n', ']d', { vim.diagnostic.goto_next, desc = "Go to previous diagnostic" })
-
-    -- Aerial
-    M.register_keymap('n', "<leader>a", { "<Cmd>AerialToggle!<CR>", desc = "Toogle symbols" })
-    M.register_keymap('n', "<C-a>", { "<Cmd>Telescope aerial<CR>", desc = "Open symbols nav" })
 end
 
 return M
