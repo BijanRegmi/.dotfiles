@@ -1,6 +1,6 @@
 return {
     "Exafunction/codeium.vim",
-    event = "BufEnter",
+    event = "InsertEnter",
     config = function()
         local opts = { expr = true, silent = true }
         vim.keymap.set("i", "<A-l>", function()
