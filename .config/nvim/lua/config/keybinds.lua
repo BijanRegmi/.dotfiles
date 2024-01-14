@@ -3,7 +3,8 @@ vim.g.mapleader = " "
 
 vim.keymap.set("", "<Space>", "<Nop>")
 
-local keyopts = require("config.utils").keymap.opts
+local utils = require("config.utils")
+local keyopts = utils.keymap.opts
 
 -- Input Manipulation
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", keyopts("Move line down"))
@@ -39,3 +40,6 @@ vim.keymap.set("n", "<C-k>", ":resize +2<CR>", keyopts("Expand row size"))
 vim.keymap.set("n", "<C-j>", ":resize -2<CR>", keyopts("Reduce row size"))
 vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", keyopts("Expand column size"))
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", keyopts("Reduct column size"))
+
+-- Colorscheme
+vim.keymap.set("n", "<leader>c", utils.colorscheme.select, keyopts("Change colorscheme"))

@@ -1,4 +1,4 @@
-local settings = require("config.settings")
+require("config.settings")
 require("config.keybinds")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -14,6 +14,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins", { change_detection = { notify = false } })
+require("lazy").setup("plugins", { change_detection = { notify = false }, ui = { border = "rounded" } })
 
-vim.cmd.colorscheme(settings.colorscheme)
+vim.cmd.colorscheme(require("config.utils").colorscheme.default)
