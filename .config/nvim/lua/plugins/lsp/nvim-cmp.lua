@@ -7,10 +7,12 @@ return {
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-buffer",
         "onsails/lspkind-nvim",
+        "L3MON4D3/LuaSnip",
     },
     config = function(_, opts)
         local cmp = require("cmp")
         local lspkind = require("lspkind")
+        local luasnip = require("luasnip")
         local lspkind_fmt = lspkind.cmp_format({
             mode = "symbol_text",
             maxwidth = 50,
@@ -42,8 +44,14 @@ return {
                 ["<C-k>"] = cmp.mapping.scroll_docs(-4),
                 ["<CR>"] = cmp.mapping.confirm({ select = false }),
             }),
+            snippet = {
+                expand = function(args)
+                    luasnip.lsp_expand(args.body)
+                end,
+            },
             sources = {
                 { name = "nvim_lsp" },
+                { name = "luasnip" },
                 { name = "buffer" },
                 { name = "path" },
             },
