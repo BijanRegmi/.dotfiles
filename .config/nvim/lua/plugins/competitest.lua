@@ -100,6 +100,7 @@ return {
             rust = { exec = "./$(FNOEXT)" },
             python = { exec = "python", args = { "$(FNAME)" } },
             java = { exec = "java", args = { "$(FNOEXT)" } },
+            javascript = { exec = "node", args = { "$(FNAME)" } },
         },
         multiple_testing = -1,
         maximum_time = -1,

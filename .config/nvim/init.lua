@@ -17,3 +17,14 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", { change_detection = { notify = false }, ui = { border = "rounded" } })
 
 vim.cmd.colorscheme(require("config.utils").colorscheme.default)
+
+local autocmd = vim.api.nvim_create_autocmd
+autocmd("TextYankPost", {
+    pattern = "*",
+    callback = function()
+        vim.highlight.on_yank({
+            higroup = "IncSearch",
+            timeout = 80,
+        })
+    end,
+})
