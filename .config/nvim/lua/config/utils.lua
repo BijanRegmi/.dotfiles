@@ -19,6 +19,7 @@ return {
                 "material-palenight",
                 "material-oceanic",
                 "material-deep-ocean",
+                "gruvbox",
                 "tokyonight",
                 "tokyonight-day",
                 "tokyonight-night",

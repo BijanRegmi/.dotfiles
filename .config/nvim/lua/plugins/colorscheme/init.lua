@@ -47,4 +47,11 @@ return {
         priority = 1000,
         opts = require("plugins.colorscheme.dracula"),
     },
+
+    {
+        "ellisonleao/gruvbox.nvim",
+        priority = 1000,
+        config = true,
+        opts = require("plugins.colorscheme.gruvbox"),
+    },
 }
