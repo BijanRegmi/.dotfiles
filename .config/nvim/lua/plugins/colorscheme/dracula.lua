@@ -1,4 +1,4 @@
-require("dracula").setup {
+return {
     -- customize dracula color palette
     colors = {
         bg = "#282A36",
@@ -27,11 +27,11 @@ require("dracula").setup {
     -- show the '~' characters after the end of buffers
     show_end_of_buffer = false, -- default false
     -- use transparent background
-    transparent_bg = false,     -- default false
+    transparent_bg = false,    -- default false
     -- set custom lualine background color
     lualine_bg_color = "#44475a", -- default nil
     -- set italic comment
-    italic_comment = true,      -- default false
+    italic_comment = true,     -- default false
     -- overrides the default highlights see `:h synIDattr`
     overrides = {
         -- Examples

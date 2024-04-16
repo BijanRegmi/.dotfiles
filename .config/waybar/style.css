@@ -5,7 +5,7 @@
 }
 
 window#waybar {
-  background-color: #1f2335;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 #workspaces button {

@@ -48,10 +48,12 @@ local settings = {
     signcolumn = "yes",
     -- Enable terminal colors
     termguicolors = true,
-    mouse = 'a',
+    mouse = "a",
     foldenable = true,
-    foldlevel = 99,      -- set high foldlevel for nvim-ufo
-    foldlevelstart = 99, -- start with all code unfolded
+    -- set high foldlevel for nvim-ufo
+    foldlevel = 99,
+    -- start with all code unfolded
+    foldlevelstart = 99,
 }
 
 for key, value in pairs(settings) do
@@ -60,6 +62,3 @@ end
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
-settings.colorscheme = 'catppuccin'
-return settings

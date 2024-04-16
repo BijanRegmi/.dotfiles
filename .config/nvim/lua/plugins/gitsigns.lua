@@ -1,65 +1,27 @@
+local keyopts = require("config.utils").keymap.opts
+
 return {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
+    cmd = "Gitsigns",
+    init = function()
+        vim.keymap.set("n", "gbl", ":Gitsigns blame_line<CR>", keyopts("Git blame line"))
+        vim.keymap.set("n", "ghp", ":Gitsigns preview_hunk<CR>", keyopts("Git preview hunk"))
+        vim.keymap.set("n", "gnh", ":Gitsigns next_hunk<CR>", keyopts("Git next hunk"))
+        vim.keymap.set("n", "gph", ":Gitsigns prev_hunk<CR>", keyopts("Git previous hunk"))
+        vim.keymap.set("n", "gdt", ":Gitsigns diffthis<CR>", keyopts("Git diff this"))
+        vim.keymap.set("n", "gsh", ":Gitsigns stage_hunk<CR>", keyopts("Git stage hunk"))
+        vim.keymap.set("n", "grh", ":Gitsigns reset_hunk<CR>", keyopts("Git reset hunk"))
+        vim.keymap.set("n", "grb", ":Gitsigns reset_buffer<CR>", keyopts("Git reset buffer"))
+        vim.keymap.set("n", "guh", ":Gitsigns undo_stage_hunk<CR>", keyopts("Git undow stage hunk"))
+        vim.keymap.set("n", "gsb", ":Gitsigns stage_buffer<CR>", keyopts("Git stage buffer"))
+    end,
     opts = {
         signs = {
-            add = {
-                hl = 'GitSignsAdd',
-                text = "▎",
-                numhl = 'GitSignsAddNr',
-                linehl = 'GitSignsAddLn'
-            },
-            change = {
-                hl = 'GitSignsChange',
-                text = "▎",
-                numhl = 'GitSignsChangeNr',
-                linehl = 'GitSignsChangeLn'
-            },
-            delete = {
-                hl = 'GitSignsDelete',
-                text = '_',
-                numhl = 'GitSignsDeleteNr',
-                linehl = 'GitSignsDeleteLn'
-            },
-            topdelete = {
-                hl = 'GitSignsDelete',
-                text = '‾',
-                numhl = 'GitSignsDeleteNr',
-                linehl = 'GitSignsDeleteLn'
-            },
-            changedelete = {
-                hl = 'GitSignsChange',
-                text = "▎",
-                numhl = 'GitSignsChangeNr',
-                linehl = 'GitSignsChangeLn'
-            }
+            untracked = { text = "▎" },
         },
-        signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-        numhl = true,      -- Toggle with `:Gitsigns toggle_numhl`
-        linehl = false,    -- Toggle with `:Gitsigns toggle_linehl`
-        word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
-        watch_gitdir = { interval = 1000, follow_files = true },
-        attach_to_untracked = true,
-        current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
-        current_line_blame_opts = {
-            virt_text = true,
-            virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-            delay = 1000,
-            ignore_whitespace = false
-        },
-        current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
-        sign_priority = 6,
-        update_debounce = 100,
-        status_formatter = nil, -- Use default
-        max_file_length = 40000,
         preview_config = {
-            -- Options passed to nvim_open_win
-            border = 'rounded',
-            style = 'minimal',
-            relative = 'cursor',
-            row = 0,
-            col = 1
+            border = "rounded",
         },
-        yadm = { enable = false }
-    }
+    },
 }

@@ -3,54 +3,55 @@ return {
         "Alexis12119/nightly.nvim",
         lazy = true,
         priority = 1000,
-        config = function() require('plugins.colorscheme.nightly') end,
+        opts = require("plugins.colorscheme.nightly"),
     },
-
     {
         "marko-cerovac/material.nvim",
         lazy = true,
         priority = 1000,
-        config = function() require('plugins.colorscheme.material') end,
+        opts = require("plugins.colorscheme.nightly"),
     },
-
     {
         -- colorscheme tokyonight
         "folke/tokyonight.nvim",
         lazy = true,
         priority = 1000,
-        config = function() require('plugins.colorscheme.tokyonight') end,
+        opts = require("plugins.colorscheme.tokyonight"),
     },
-
     {
         -- colorscheme catppuccin
         "catppuccin/nvim",
         lazy = true,
         name = "catppuccin",
         priority = 1000,
-        config = function() require('plugins.colorscheme.catppuccin') end,
+        opts = require("plugins.colorscheme.catppuccin"),
     },
-
     {
         -- colorscheme onedark
         "navarasu/onedark.nvim",
         lazy = true,
         priority = 1000,
-        config = function() require('plugins.colorscheme.onedark') end,
+        opts = require("plugins.colorscheme.onedark"),
     },
-
     {
         -- colorscheme kanagawa
         "rebelot/kanagawa.nvim",
         lazy = true,
         priority = 1000,
-        config = function() require('plugins.colorscheme.kanagawa') end,
+        opts = require("plugins.colorscheme.kanagawa"),
     },
-
     {
         -- colorscheme dracula
         "Mofiqul/dracula.nvim",
         lazy = true,
         priority = 1000,
-        config = function() require('plugins.colorscheme.dracula') end,
+        opts = require("plugins.colorscheme.dracula"),
+    },
+
+    {
+        "ellisonleao/gruvbox.nvim",
+        priority = 1000,
+        config = true,
+        opts = require("plugins.colorscheme.gruvbox"),
     },
 }

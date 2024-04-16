@@ -1,4 +1,4 @@
-require("catppuccin").setup {
+return {
     background = {
         light = "latte",
         dark = "mocha",
@@ -7,7 +7,7 @@ require("catppuccin").setup {
     term_colors = false,
     compile = {
         enabled = false,
-        path = vim.fn.stdpath "cache" .. "/catppuccin",
+        path = vim.fn.stdpath("cache") .. "/catppuccin",
     },
     dim_inactive = {
         enabled = false,

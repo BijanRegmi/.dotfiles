@@ -12,6 +12,7 @@
     "format-time": "{H}h {M}min",
     "format-icons": ["", "", "", "", ""],
     "tooltip": true,
-    "tooltip-format": "{timeTo}"
+    "tooltip-format": "{timeTo}",
+    "on-click": "asusctl profile -n; notify-send 'Active profile'  $(asusctl profile -p | sed s:'Active profile is'::)"
   }
 }

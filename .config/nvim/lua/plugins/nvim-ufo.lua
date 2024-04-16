@@ -1,6 +1,6 @@
 local handler = function(virtText, lnum, endLnum, width, truncate)
     local newVirtText = {}
-    local suffix = (' 󰁂 %d '):format(endLnum - lnum)
+    local suffix = (" 󰁂 %d "):format(endLnum - lnum)
     local sufWidth = vim.fn.strdisplaywidth(suffix)
     local targetWidth = width - sufWidth
     local curWidth = 0
@@ -16,49 +16,48 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
             chunkWidth = vim.fn.strdisplaywidth(chunkText)
             -- str width returned from truncate() may less than 2nd argument, need padding
             if curWidth + chunkWidth < targetWidth then
-                suffix = suffix .. (' '):rep(targetWidth - curWidth - chunkWidth)
+                suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth)
             end
             break
         end
         curWidth = curWidth + chunkWidth
     end
-    table.insert(newVirtText, { suffix, 'MoreMsg' })
+    table.insert(newVirtText, { suffix, "MoreMsg" })
     return newVirtText
 end
 
+local keyopts = require("config.utils").keymap.opts
+
 return {
-    'kevinhwang91/nvim-ufo',
-    dependencies = { 'kevinhwang91/promise-async' },
+    "kevinhwang91/nvim-ufo",
+    dependencies = { "kevinhwang91/promise-async" },
     event = "BufReadPost",
     opts = {
-        filetype_exclude = { 'help', 'alpha', 'dashboard', 'neo-tree', 'Trouble', 'lazy', 'mason' },
+        filetype_exclude = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason" },
         fold_virt_text_handler = handler,
-        provider_selector = function(bufnr, filetype, buftype)
-            return { 'lsp', 'indent' }
-        end
+        provider_selector = function()
+            return { "lsp", "indent" }
+        end,
     },
     config = function(_, opts)
-        vim.api.nvim_create_autocmd('FileType', {
-            group = vim.api.nvim_create_augroup('local_detach_ufo', { clear = true }),
+        local ufo = require("ufo")
+        vim.api.nvim_create_autocmd("FileType", {
+            group = vim.api.nvim_create_augroup("local_detach_ufo", { clear = true }),
             pattern = opts.filetype_exclude,
             callback = function()
-                require('ufo').detach()
+                ufo.detach()
             end,
         })
-        local keybinding = require("keybindings")
-        keybinding.register_keymap('n', "zR", { require("ufo").openAllFolds, desc = "Open all folds" })
-        keybinding.register_keymap('n', "zM", { require('ufo').closeAllFolds, desc = "Close all folds" })
-        keybinding.register_keymap('n', "zr", { require('ufo').openFoldsExceptKinds, desc = "Open fold except" })
-        keybinding.register_keymap('n', "zm", { require('ufo').closeFoldsWith, desc = "Close folds with" }) -- closeAllFolds == closeFoldsWith(0)
-        keybinding.register_keymap('n', "zp", {
-            function()
-                local winid = require('ufo').peekFoldedLinesUnderCursor()
-                if not winid then
-                    vim.lsp.buf.hover()
-                end
-            end,
-            desc = "Peek fold"
-        })
-        require('ufo').setup(opts)
+        vim.keymap.set("n", "zR", ufo.openAllFolds, keyopts("Open all folds"))
+        vim.keymap.set("n", "zM", ufo.closeAllFolds, keyopts("Close all folds"))
+        vim.keymap.set("n", "zr", ufo.openFoldsExceptKinds, keyopts("Open fold except"))
+        vim.keymap.set("n", "zm", ufo.closeFoldsWith, keyopts("Close folds with"))
+        vim.keymap.set("n", "zp", function()
+            local winid = ufo.peekFoldedLinesUnderCursor()
+            if not winid then
+                vim.lsp.buf.hover()
+            end
+        end, keyopts("Peek fold"))
+        ufo.setup(opts)
     end,
 }

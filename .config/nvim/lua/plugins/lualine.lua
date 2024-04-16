@@ -1,53 +1,44 @@
 return {
-    'nvim-lualine/lualine.nvim',
-    event = 'VeryLazy',
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    event = "VeryLazy",
     opts = {
         options = {
-            icons_enabled = true,
-            theme = require('settings').colorscheme,
-            component_separators = '',
-            section_separators = { left = '', right = '' },
-            disabled_filetypes = { statusline = {}, winbar = {} },
-            ignore_focus = {},
-            always_divide_middle = true,
-            globalstatus = false,
-            refresh = { statusline = 1000, tabline = 1000, winbar = 1000 }
+            component_separators = "",
         },
         sections = {
-            lualine_a = { 'mode' },
+            lualine_a = { "mode" },
             lualine_b = {
-                'branch',
-                'diff',
-                {
-                    'diagnostics',
-                    sources = { 'nvim_diagnostic' },
-                    symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
-                }
+                "branch",
+                "diff",
             },
-            lualine_c = { { 'filename', path = 1 } },
-            lualine_x = { { 'encoding', fmt = string.upper }, 'filetype' },
-            lualine_y = { 'progress', 'location' },
-            lualine_z = {},
+            lualine_c = {
+                {
+                    "diagnostics",
+                    sources = { "nvim_diagnostic" },
+                    symbols = require("config.utils").icons.diagnostics,
+                },
+            },
+            lualine_x = { { "encoding", fmt = string.upper }, "filetype" },
+            lualine_y = { "progress", "location" },
+            lualine_z = { { "filename", path = 1 } },
         },
         inactive_sections = {
-            lualine_a = { 'mode' },
+            lualine_a = { "mode" },
             lualine_b = {
-                'branch',
-                'diff',
-                {
-                    'diagnostics',
-                    sources = { 'nvim_diagnostic' },
-                    symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
-                }
+                "branch",
+                "diff",
             },
-            lualine_c = { { 'filename', path = 1 } },
-            lualine_x = { { 'encoding', fmt = string.upper }, 'filetype' },
-            lualine_y = { 'progress', 'location' },
-            lualine_z = {},
+            lualine_c = {
+                {
+                    "diagnostics",
+                    sources = { "nvim_diagnostic" },
+                    symbols = require("config.utils").icons.diagnostics,
+                },
+            },
+            lualine_x = { { "encoding", fmt = string.upper }, "filetype" },
+            lualine_y = { "progress", "location" },
+            lualine_z = { { "filename", path = 1 } },
         },
-        tabline = {},
-        winbar = {},
-        inactive_winbar = {},
-        extensions = { 'nvim-tree', 'toggleterm' }
-    }
+    },
 }

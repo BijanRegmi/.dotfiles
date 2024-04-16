@@ -1,45 +1,39 @@
+local keyopts = require("config.utils").keymap.opts
+
 return {
     "akinsho/toggleterm.nvim",
-    version = '*',
+    version = "*",
+    cmd = "ToggleTerm",
     opts = {
-        size = 10,
-        open_mapping = [[<c-\>]],
-        hide_numbers = true,
-        shade_filetypes = {},
+        open_mapping = "<C-\\>",
         autochdir = false,
-        shade_terminals = true,
-        shading_factor = '1',
-        start_in_insert = true,
-        insert_mappings = true,
-        terminal_mappings = true,
-        persist_size = true,
-        persist_mode = true,
-        direction = 'horizontal',
-        close_on_exit = true,
-        shell = vim.o.shell,
-        auto_scroll = true,
-        float_opts = { border = 'rounded', winblend = 3 },
-        winbar = {
-            enabled = false,
-            name_formatter = function(term) return term.name end
-        }
+        float_opts = {
+            border = "rounded",
+            winblend = 10,
+        },
     },
-    config = function(_, opts)
-        local toggleTerm = require("toggleterm")
-        toggleTerm.setup(opts)
+    keys = { "<C-\\>", "<C-l>" },
+    init = function()
+        function _G.set_terminal_keymaps()
+            local opts = { buffer = 0 }
+            vim.keymap.set("t", "<A-esc>", [[<C-\><C-n>]], opts)
+        end
 
-        -- Setup lazygit terminal
-        local Terminal = require('toggleterm.terminal').Terminal
+        vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+    end,
+    config = function(_, opts)
+        require("toggleterm").setup(opts)
+
+        local Terminal = require("toggleterm.terminal").Terminal
         local lazygit = Terminal:new({
             cmd = "lazygit",
             dir = "git_dir",
             direction = "float",
-            count = 5,
-            float_opts = { border = "rounded" }
         })
+        function _lazygit_toggle()
+            lazygit:toggle()
+        end
 
-        function _lazygit_toggle() lazygit:toggle() end
-
-        require("keybindings").register_keymap('n', "<C-l>", { _lazygit_toggle, desc = "Toggle lazygit" })
-    end
+        vim.keymap.set("n", "<C-l>", _lazygit_toggle, keyopts("Toggle lazygit"))
+    end,
 }

@@ -1,14 +1,15 @@
+local keyopts = require("config.utils").keymap.opts
+
 return {
-    'stevearc/aerial.nvim',
+    "stevearc/aerial.nvim",
+    event = "BufRead",
+    cmd = "AerialToggle",
+    init = function()
+        vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>", keyopts("Toggle Aerial"))
+    end,
+    config = true,
     dependencies = {
         "nvim-treesitter/nvim-treesitter",
-        "nvim-tree/nvim-web-devicons"
-    },
-    opts = {
-        on_attach = function(bufnr)
-            local register_keymap = require("keybindings").register_keymap
-            register_keymap('n', "<leader>a", { "<Cmd>AerialToggle!<CR>", desc = "Toogle symbols" })
-            register_keymap('n', "<C-a>", { "<Cmd>Telescope aerial<CR>", desc = "Open symbols nav" })
-        end
+        "nvim-tree/nvim-web-devicons",
     },
 }
