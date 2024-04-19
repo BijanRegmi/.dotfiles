@@ -29,7 +29,7 @@ return {
 
         section.buttons.val = {
             btn("o", " " .. " Current Session", "<cmd>lua require('persistence').load()<CR>"),
-            btn("t", " " .. " File Tree", "<cmd>NvimTreeToggle<CR>"),
+            btn("t", " " .. " File Tree", "<cmd>Neotree toggle<CR>"),
             btn("n", " " .. " New File", "<CMD>enew<CR>"),
             btn("r", " " .. " Last Session", "<cmd>lua require('persistence').load({ last = true })<CR>"),
             btn(".", " " .. " Dotfiles", "<CMD>cd $HOME/.dotfiles | NvimTreeToggle<CR>"),
