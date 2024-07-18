@@ -12,7 +12,7 @@ return {
     -- special highlight for exception handling keywords
     specialException = true,
     -- do not set background color
-    transparent = false,
+    transparent = true,
     -- dim inactive window `:h hl-NormalNC`
     dimInactive = false,
     -- adjust window separators highlight for laststatus=3
