@@ -7,12 +7,16 @@ return {
     end,
     opts = {
         win = {
+            no_overlap = true,
             border = "rounded",
-            position = "bottom",
-            margin = { 0, 0, 0, 0 },
             padding = { 1, 1, 1, 1 },
-            winblend = 0,
+            title = true,
+            title_pos = "center",
             zindex = 1000,
+            bo = {},
+            wo = {
+              winblend = 0, 
+            },
         },
-    },
+    }
 }

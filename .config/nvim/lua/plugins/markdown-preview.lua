@@ -5,5 +5,6 @@ return {
     init = function()
         vim.g.mkdp_filetypes = { "markdown" }
     end,
+    opts = {},
     ft = { "markdown" },
 }
