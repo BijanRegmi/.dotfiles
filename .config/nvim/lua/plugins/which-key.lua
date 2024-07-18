@@ -6,7 +6,7 @@ return {
         vim.o.timeoutlen = 500
     end,
     opts = {
-        window = {
+        win = {
             border = "rounded",
             position = "bottom",
             margin = { 0, 0, 0, 0 },

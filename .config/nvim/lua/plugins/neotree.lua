@@ -111,7 +111,7 @@ return {
         },
         filesystem = {
             filtered_items = {
-                visible = true,
+                visible = false,
                 hide_dotfiles = true,
                 hide_gitignored = true,
             },
