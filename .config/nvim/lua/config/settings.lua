@@ -17,7 +17,7 @@ local settings = {
     autoindent = true,
     smartindent = true,
     -- Number of spaces inserted for each indentation
-    shiftwidth = 4,
+    shiftwidth = 2,
     -- Convert tabs to spaces
     expandtab = true,
     -- Number of spaces for tab

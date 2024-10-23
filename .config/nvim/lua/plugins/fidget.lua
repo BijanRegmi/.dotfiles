@@ -4,7 +4,7 @@ return {
     opts = {
         notification = {
             window = {
-                align = "top",
+                align = "bottom",
                 border = "rounded",
             },
         },

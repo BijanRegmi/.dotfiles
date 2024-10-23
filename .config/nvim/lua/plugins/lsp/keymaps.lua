@@ -3,7 +3,12 @@ local keyopts = require("config.utils").keymap.opts
 return {
     on_attach = function(_, bufnr)
         vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
+        if _.server_capabilities.inlayHintProvider then
+            vim.lsp.inlay_hint.enable(true, {bufnr})
+            vim.keymap.set("n", "<C-i>", function()
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+            end, keyopts("Toggle inlay hints", bufnr))
+        end
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, keyopts("Go to declaration", bufnr))
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, keyopts("Go to definition", bufnr))
         vim.keymap.set("n", "K", vim.lsp.buf.hover, keyopts("View docs", bufnr))

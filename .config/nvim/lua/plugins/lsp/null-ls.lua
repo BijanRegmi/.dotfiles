@@ -6,9 +6,10 @@ return {
         return {
             sources = {
                 formatting.prettier.with({
-                    condition = function(utils)
-                        return utils.has_file({ ".prettierrc", ".prettierrc.json", ".prettierrc.yml" })
-                    end,
+                    -- condition = function(utils)
+                    --     return true
+                        -- return utils.has_file({ ".prettierrc", ".prettierrc.json", ".prettierrc.yml" })
+                    -- end,
                 }),
                 formatting.stylua,
             },
