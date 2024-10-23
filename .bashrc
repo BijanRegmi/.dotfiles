@@ -13,6 +13,7 @@ alias ll='ls -la'				# List Hidden Files too
 alias cp='cp -v'                # Verbose copy
 alias cdd='cd ~/.dotfiles/'
 alias ..='cd ..'
+alias grep='grep --color=auto'
 
 alias gtop='LANG=en_US.utf8 TERM=xterm-256color gtop'
 alias r='ranger'
@@ -54,3 +55,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(starship init bash)"
+
+export RIPGREP_CONFIG_PATH='/home/immo/.rg'
