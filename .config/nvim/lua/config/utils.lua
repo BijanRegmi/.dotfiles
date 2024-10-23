@@ -20,6 +20,7 @@ return {
                 "material-oceanic",
                 "material-deep-ocean",
                 "gruvbox",
+                "nord",
                 "tokyodark",
                 "tokyonight",
                 "tokyonight-day",

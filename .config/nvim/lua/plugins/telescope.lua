@@ -5,7 +5,6 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     cmd = "Telescope",
-    tag = "0.1.5",
     init = function(_)
         vim.keymap.set("n", "<C-f>", ":Telescope find_files<CR>", keyopts("Telescope find files"))
         vim.keymap.set("n", "<C-g>", ":Telescope live_grep<CR>", keyopts("Telescope live grep"))
