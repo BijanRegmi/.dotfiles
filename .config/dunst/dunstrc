@@ -1,6 +1,6 @@
 [global]
-	monitor = 0
-    follow = mouse
+	monitor = 1
+    follow = none
 	width = 260
 	height = 90
 	origin = top-right

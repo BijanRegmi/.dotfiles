@@ -13,6 +13,6 @@
     "format-icons": ["", "", "", "", ""],
     "tooltip": true,
     "tooltip-format": "{timeTo}",
-    "on-click": "asusctl profile -n; notify-send 'Active profile'  $(asusctl profile -p | sed s:'Active profile is'::)"
+    "on-click": "asusctl profile -n; notify-send 'Active profile'  $(asusctl profile -p | grep 'Active profile' | sed s:'Active profile is'::)"
   }
 }
