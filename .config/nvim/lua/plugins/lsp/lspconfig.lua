@@ -23,7 +23,7 @@ return {
             vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
         end
 
-        vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, keyopts("View diagnostic"))
+        vim.keymap.set("n", "<leader><leader>", vim.diagnostic.open_float, keyopts("View diagnostic"))
         vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, keyopts("Go to next diagnostic"))
         vim.keymap.set("n", "]d", vim.diagnostic.goto_next, keyopts("Go to previous diagnostic"))
         vim.keymap.set("n", "<leader>f", "<Cmd>lua vim.lsp.buf.format({async = true})<CR>", keyopts("Format document"))
