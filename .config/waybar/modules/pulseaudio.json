@@ -1,6 +1,7 @@
 {
   "pulseaudio": {
     "format": "{format_source}{icon}{volume}%",
+    "format-source": " ",
     "format-source-muted": " ",
     "format-muted": "{format_source}󰝟 {volume}%",
     "format-icons": [" ", " ", " "],
