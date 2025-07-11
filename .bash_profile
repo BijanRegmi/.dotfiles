@@ -6,7 +6,6 @@
 export EDITOR='nvim'
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
-# Start X-Server
-# startx
+[[ -f ~/.bashrc ]] && . ~/.bashrc

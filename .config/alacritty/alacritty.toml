@@ -2,6 +2,9 @@
 [cursor]
 vi_mode_style = "Block"
 
+[terminal.shell]
+program = "/bin/bash"
+
 [cursor.style]
 shape = "Beam"
 
@@ -9,7 +12,7 @@ shape = "Beam"
 TERM = "xterm-256color"
 
 [font.normal]
-family = "monospace"
+family = "JetBrainsMono Nerd Font"
 style = "Regular"
 
 [font.offset]
@@ -18,6 +21,8 @@ y = -1
 
 [window]
 opacity = 0.9
+decorations = "none"
+option_as_alt = "OnlyLeft"
 
 [window.padding]
 x = 3
