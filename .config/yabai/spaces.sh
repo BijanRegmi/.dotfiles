@@ -23,7 +23,6 @@ setup_space 4 web2
 setup_space 5 sp5
 setup_space 6 sp6
 
-echo $displays
 if [ displays == "2" ]; then
   echo "Moving to display 2"
   yabai -m space 2 --display 2
