@@ -5,6 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+eval $(/usr/local/bin/brew shellenv)
 eval "$(starship init bash)"
 
 # Aliases
@@ -34,13 +35,6 @@ export BUN_INSTALL="$HOME/.bun"
 
 export PATH=$PATH:~/.local/bin/:~/.cargo/bin/:/opt/flutter/bin:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/emulator:$ANDROID_HOME/tools/:$ANDROID_HOME/tools/bin/:$BUN_INSTALL/bin:~/go/bin
 
-export HOMEBREW_PREFIX="/usr/local";
-export HOMEBREW_CELLAR="/usr/local/Cellar"
-export HOMEBREW_REPOSITORY="/usr/local/Homebrew"
-[ -z "${MANPATH-}" ] || export MANPATH=":${MANPATH#:}"
-export INFOPATH="/usr/localshare/info:${INFOPATH:-}"
-# eval $(/usr/local/bin/brew shellenv)
-
 cdc() {
     cd $HOME/Documents/Coding/$1
 }
@@ -53,7 +47,6 @@ _cdc_complete() {
 
 complete -o nospace -F _cdc_complete cdc
 
-# neofetch
 if [ -z "$TMUX" ]; then
     exec tmux 2>/dev/null
 fi
@@ -64,3 +57,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export RIPGREP_CONFIG_PATH='/home/immo/.rg'
+
+neofetch
