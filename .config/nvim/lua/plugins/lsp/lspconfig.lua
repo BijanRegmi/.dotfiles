@@ -1,55 +1,90 @@
 local keyopts = require("config.utils").keymap.opts
 
+---@param client vim.lsp.Client
+---@param bufnr integer
+local function on_attach (client, bufnr)
+  -- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, keyopts("[G]oto [D]efinition", bufnr))
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, keyopts("[G]oto [D]eclaration", bufnr))
+  vim.keymap.set("n", "gr", vim.lsp.buf.references, keyopts("[G]oto [R]eferences", bufnr))
+  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, keyopts("[G]oto [I]mplementation", bufnr))
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, keyopts("View docs", bufnr))
+  vim.keymap.set("i", "<C-k>", function ()
+    vim.lsp.buf.signature_help({ border = "rounded" })
+  end, keyopts("Signature help", bufnr))
+  vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, keyopts("Goto type [D]efinition", bufnr))
+  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, keyopts("[R]e[n]ame symbol", bufnr))
+  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, keyopts("[C]ode [A]ction", bufnr))
+
+  if client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+    vim.keymap.set("n", "<C-k>", function ()
+      vim.lsp.buf.clear_references()
+      vim.lsp.buf.document_highlight()
+    end, keyopts("Document highlight", bufnr))
+  end
+
+  if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+    vim.keymap.set("n", "<C-i>", function ()
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }))
+    end, keyopts("Toggle inlay hints", bufnr))
+  end
+end
+
 return {
   "neovim/nvim-lspconfig",
   event = "BufRead",
   dependencies = {
     "mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "nvim-cmp",
+    { "mason-org/mason-lspconfig.nvim", opts = {} },
   },
   init = function ()
     vim.o.completeopt = "menuone,noselect"
-
-    local icons = require("config.utils").icons.diagnostics
-    local signs = {
-      { name = "DiagnosticSignError", text = icons.error },
-      { name = "DiagnosticSignWarn", text = icons.warn },
-      { name = "DiagnosticSignHint", text = icons.hint },
-      { name = "DiagnosticSignInfo", text = icons.info },
-    }
-
-    for _, sign in ipairs(signs) do
-      vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-    end
-
-    vim.keymap.set("n", "<leader><leader>", vim.diagnostic.open_float, keyopts("View diagnostic"))
-    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, keyopts("Go to next diagnostic"))
-    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, keyopts("Go to previous diagnostic"))
-    vim.keymap.set("n", "<leader>f", "<Cmd>lua vim.lsp.buf.format({async = true})<CR>", keyopts("Format document"))
-    vim.keymap.set("v", "<leader>f", "<Cmd>lua vim.lsp.buf.range_formatting()<CR>", keyopts("Format selected"))
   end,
   config = function ()
-    local lsp_config = require("lspconfig")
+    local icons = require("config.utils").icons.diagnostics
+    vim.diagnostic.config({
+      severity_sort = true,
+      float = { border = "rounded", source = "if_many" },
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = icons.error,
+          [vim.diagnostic.severity.WARN] = icons.warn,
+          [vim.diagnostic.severity.HINT] = icons.hint,
+          [vim.diagnostic.severity.INFO] = icons.info,
+        },
+      },
+      virtual_text = {
+        source = "if_many",
+        spacing = 2,
+        format = function (diagnostic)
+          local diagnostic_message = {
+            [vim.diagnostic.severity.ERROR] = diagnostic.message,
+            [vim.diagnostic.severity.WARN] = diagnostic.message,
+            [vim.diagnostic.severity.INFO] = diagnostic.message,
+            [vim.diagnostic.severity.HINT] = diagnostic.message,
+          }
+          return diagnostic_message[diagnostic.severity]
+        end,
+      },
+    })
+
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+
     require("lspconfig.ui.windows").default_options.border = "rounded"
+
+    ---@type string[]
     local servers = require("mason-lspconfig").get_installed_servers()
 
-    local on_attach = require("plugins.lsp.keymaps").on_attach
-    local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-    local handlers = {
-      ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-      ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
-    }
-
     for _, server in ipairs(servers) do
-      local opts = { on_attach = on_attach, capabilities = capabilities, handlers = handlers }
+      local opts = { on_attach = on_attach, capabilities = capabilities }
 
-      local available, server_options = pcall(require, "config.lsp." .. server)
+      local available, server_options = pcall(require, "plugins.lsp.configs." .. server)
       if available then
         opts = vim.tbl_deep_extend("force", opts, server_options)
       end
 
-      lsp_config[server].setup(opts)
+      vim.lsp.config[server] = opts
     end
   end,
 }

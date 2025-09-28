@@ -63,7 +63,7 @@ return {
     "shaunsingh/nord.nvim",
     priority = 1000,
     opts = require("plugins.colorscheme.nord"),
-    config = function (_, opts)
+    config = function (_, _)
       vim.g.nord_contrast = true
       vim.g.nord_borders = false
       vim.g.nord_disable_background = false

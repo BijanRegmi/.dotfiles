@@ -44,6 +44,18 @@ vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", keyopts("Reduct colu
 -- Colorscheme
 vim.keymap.set("n", "<leader>c", utils.colorscheme.select, keyopts("Change colorscheme"))
 
+-- Lsp
+vim.keymap.set("n", "<leader>f", function ()
+  require("conform").format({ lsp_format = "fallback" })
+end, keyopts("Format current file"))
+vim.keymap.set("n", "<leader><leader>", vim.diagnostic.open_float, keyopts("View diagnostic"))
+vim.keymap.set("n", "[d", function ()
+  vim.diagnostic.jump({ count = 1, float = true })
+end, keyopts("Go to next diagnostic"))
+vim.keymap.set("n", "]d", function ()
+  vim.diagnostic.jump({ count = -1, float = true })
+end, keyopts("Go to previous diagnostic"))
+
 vim.keymap.set("n", "<leader>i", function ()
   if vim.bo.ft == "typescript" then
     vim.lsp.buf.code_action({
