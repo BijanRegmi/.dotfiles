@@ -2,7 +2,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     event = "BufReadPost",
-    main = "nvim-treesitter.configs",
+    branch = "main",
     opts = {
         ensure_installed = "all",
         highlight = { enable = true },

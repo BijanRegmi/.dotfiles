@@ -1,7 +1,7 @@
 local dap = require("dap")
 local mason_registry = require("mason-registry")
 
-local js_debug_path = mason_registry.get_package("js-debug-adapter"):get_install_path()
+local js_debug_path = vim.fn.exepath("js-debug-adapter")
 local dap_executable = js_debug_path .. "/js-debug/src/dapDebugServer.js"
 
 for _, type in ipairs({

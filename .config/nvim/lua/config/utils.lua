@@ -39,6 +39,7 @@ return {
 				"kanagawa-lotus",
 				"dracula",
 				"dracula-soft",
+				"rose-pine",
 			}, { prompt = "Select colorscheme" }, function(choice)
 				vim.cmd.colorscheme(choice)
 			end)

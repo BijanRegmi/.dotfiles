@@ -1,9 +1,9 @@
 [global]
-	monitor = 1
+	# monitor = 1
     follow = none
 	width = 260
 	height = 90
-	origin = top-right
+	origin = bottom-left
 	offset = 5x20
 	notification_limit = 5
 	progress_bar = false

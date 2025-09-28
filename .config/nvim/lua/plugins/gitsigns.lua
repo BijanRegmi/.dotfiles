@@ -5,6 +5,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     cmd = "Gitsigns",
     init = function()
+        vim.keymap.set("n", "gbb", ":Gitsigns blame<CR>", keyopts("Git blame line"))
         vim.keymap.set("n", "gbl", ":Gitsigns blame_line<CR>", keyopts("Git blame line"))
         vim.keymap.set("n", "ghp", ":Gitsigns preview_hunk<CR>", keyopts("Git preview hunk"))
         vim.keymap.set("n", "gnh", ":Gitsigns next_hunk<CR>", keyopts("Git next hunk"))
