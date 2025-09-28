@@ -1,4 +1,4 @@
 return {
-    "stevearc/dressing.nvim",
-    "wakatime/vim-wakatime",
+  "stevearc/dressing.nvim",
+  "wakatime/vim-wakatime",
 }

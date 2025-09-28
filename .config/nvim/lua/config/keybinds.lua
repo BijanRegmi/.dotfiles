@@ -44,21 +44,21 @@ vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", keyopts("Reduct colu
 -- Colorscheme
 vim.keymap.set("n", "<leader>c", utils.colorscheme.select, keyopts("Change colorscheme"))
 
-vim.keymap.set("n", "<leader>i", function()
-    if vim.bo.ft == "typescript" then
-        vim.lsp.buf.code_action({
-            apply = true,
-            context = {
-                only = { "source.addMissingImports" },
-                diagnostics = {},
-            },
-        })
-        vim.lsp.buf.code_action({
-            apply = true,
-            context = {
-                only = { "source.organizeImports" },
-                diagnostics = {},
-            },
-        })
-    end
+vim.keymap.set("n", "<leader>i", function ()
+  if vim.bo.ft == "typescript" then
+    vim.lsp.buf.code_action({
+      apply = true,
+      context = {
+        only = { "source.addMissingImports" },
+        diagnostics = {},
+      },
+    })
+    vim.lsp.buf.code_action({
+      apply = true,
+      context = {
+        only = { "source.organizeImports" },
+        diagnostics = {},
+      },
+    })
+  end
 end, keyopts("Organize imports"))

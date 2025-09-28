@@ -1,7 +1,7 @@
 return {
-    transparent = true,
-    highlights = {
-        -- add or override highlights
-        -- Normal = { bg = "#000000" }
-    },
+  transparent = true,
+  highlights = {
+    -- add or override highlights
+    -- Normal = { bg = "#000000" }
+  },
 }
