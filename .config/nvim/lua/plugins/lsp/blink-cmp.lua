@@ -7,6 +7,11 @@ return {
     },
     version = "1.*",
     opts = {
+      enabled = function ()
+        return not vim.list_contains({ "DressingInput" }, vim.bo.filetype)
+          and vim.bo.buftype ~= "prompt"
+          and vim.b.completion ~= false
+      end,
       keymap = {
         ["<A-j>"] = { "select_next", "fallback" },
         ["<A-k>"] = { "select_prev", "fallback" },
@@ -37,9 +42,9 @@ return {
           border = "rounded",
           draw = {
             columns = {
-              { "source_name" },
+              { "kind_icon" },
               { "label" },
-              { "kind_icon", "kind", gap = 1 },
+              { "source_name", "kind", gap = 1 },
             },
             components = {
               source_name = {
@@ -64,7 +69,7 @@ return {
         },
         documentation = {
           auto_show = true,
-          auto_show_delay_ms = 0,
+          auto_show_delay_ms = 100,
           window = { border = "single" },
         },
         ghost_text = {
