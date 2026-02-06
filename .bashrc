@@ -13,7 +13,9 @@ alias ll='ls -la'				# List Hidden Files too
 alias cp='cp -v'                # Verbose copy
 alias cdd='cd ~/.dotfiles/'
 alias ..='cd ..'
+alias ...='cd ../../'
 alias grep='grep --color=auto'
+alias sizesort='du -d 1 -ah . 2>/dev/null | sort -rh'
 
 alias gtop='LANG=en_US.utf8 TERM=xterm-256color gtop'
 alias r='ranger'
@@ -27,10 +29,19 @@ alias wlist='iwctl station wlan0 get-networks'
 alias wdisc='iwctl station wlan0 disconnect'
 alias wconn='iwctl station wlan0 connect'
 
-export ANDROID_HOME='/home/immo/Android/Sdk'
+## Path configuration
 export BUN_INSTALL="$HOME/.bun"
 
-export PATH=$PATH:~/.local/bin/:~/.cargo/bin/:/opt/flutter/bin:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/emulator:$ANDROID_HOME/tools/:$ANDROID_HOME/tools/bin/:$BUN_INSTALL/bin:~/go/bin
+BUN_PATH="$BUN_INSTALL/bin"
+GO_PATH="$HOME/go/bin"
+CARGO_PATH="$HOME/.cargo/bin/"
+
+## Flutter config
+FVM_PATH="$HOME/.fvm_flutter/bin"
+FVM_FLUTTER_PATH="$HOME/fvm/default/bin"
+export CHROME_EXECUTABLE="/usr/bin/google-chrome-stable"
+
+export PATH=$PATH:~/.local/bin/:$CARGO_PATH:$BUN_PATH:$GO_PATH:$FVM_PATH:$FVM_FLUTTER_PATH
 
 cdc() {
     cd $HOME/Documents/Coding/$1
@@ -50,10 +61,16 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ "$TERM" =~ xterm ]] && [[
 fi
 
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 eval "$(starship init bash)"
 
-export RIPGREP_CONFIG_PATH='/home/immo/.rg'
+export RIPGREP_CONFIG_PATH="$HOME.rg"
+
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+export PATH="/home/immo/.shorebird/bin:$PATH"
+export PATH="$PATH:$HOME/.pub-cache/bin"

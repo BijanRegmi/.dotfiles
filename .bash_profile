@@ -10,3 +10,8 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Start X-Server
 # startx
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[ -f /home/immo/.dart-cli-completion/bash-config.bash ] && . /home/immo/.dart-cli-completion/bash-config.bash || true
+## [/Completion]

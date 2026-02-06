@@ -52,9 +52,15 @@ vim.keymap.set("n", "<leader><leader>", vim.diagnostic.open_float, keyopts("View
 vim.keymap.set("n", "[d", function ()
   vim.diagnostic.jump({ count = 1, float = true })
 end, keyopts("Go to next diagnostic"))
+vim.keymap.set("n", "{d", function ()
+  vim.diagnostic.jump({ count = 1, float = true, severity = vim.diagnostic.severity.ERROR })
+end, keyopts("Go to next error diagnostic"))
 vim.keymap.set("n", "]d", function ()
   vim.diagnostic.jump({ count = -1, float = true })
 end, keyopts("Go to previous diagnostic"))
+vim.keymap.set("n", "]d", function ()
+  vim.diagnostic.jump({ count = -1, float = true, severity = vim.diagnostic.severity.ERROR })
+end, keyopts("Go to previous error diagnostic"))
 
 vim.keymap.set("n", "<leader>i", function ()
   if vim.bo.ft == "typescript" then

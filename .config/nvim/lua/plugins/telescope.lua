@@ -7,6 +7,7 @@ return {
   cmd = "Telescope",
   init = function (_)
     vim.keymap.set("n", "<C-f>", ":Telescope find_files<CR>", keyopts("Telescope find files"))
+    vim.keymap.set("n", "<leader>b", ":Telescope buffers<CR>", keyopts("Telescope find buffers"))
     vim.keymap.set("n", "<C-g>", ":Telescope live_grep<CR>", keyopts("Telescope live grep"))
   end,
   opts = {
@@ -18,6 +19,10 @@ return {
       },
     },
     pickers = {
+      buffers = {
+        theme = "dropdown",
+        path_display = { filename_first = { reverse_directories = false } },
+      },
       find_files = {
         theme = "dropdown",
         hidden = true,
