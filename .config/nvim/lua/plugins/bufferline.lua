@@ -20,7 +20,7 @@ return {
         },
       },
       color_icons = true,
-      separator_style = "slant",
+      separator_style = { "", "" },
     },
   },
 }
