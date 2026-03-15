@@ -10,19 +10,19 @@
 }
 
 #outer-box {
-  background-color: #1f2335;
-  border: 3px solid #3d59a1;
+  background-color: #e9dcd4;
+  border: 3px solid #cfc5bc;
   border-radius: 10px;
   padding: 10px;
 }
 
 #input {
   padding: 10px;
-  color: #7aa2f7;
+  color: #0a0a0a;
   font-size: 1.5rem;
   background-color: inherit;
   border-radius: 0;
-  border-bottom: 1px solid #7aa2f7;
+  border-bottom: 1px solid #cfc5bc;
 }
 
 #input:focus {
@@ -36,15 +36,15 @@
 #entry {
   padding: calc(65px / 5 - 4px);
   margin: 4px 0px;
-  color: #a9b1d6;
+  color: #2a2a2a;
   outline: none;
 }
 
 #entry:selected {
-  background-color: transparent;
-  color: #7aa2f7;
+  background-color: #cfc5bc;
+  color: #0a0a0a;
 }
 
 label:selected {
-  color: #7aa2f7;
+  color: #0a0a0a;
 }
