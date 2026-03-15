@@ -9,7 +9,7 @@ return {
     end,
   },
   colorscheme = {
-    default = "catppuccin-mocha",
+    default = "rose-pine",
     select = function ()
       vim.ui.select({
         "nightly",

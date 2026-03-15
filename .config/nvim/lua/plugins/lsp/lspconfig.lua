@@ -86,5 +86,14 @@ return {
 
       vim.lsp.config[server] = opts
     end
+
+    vim.lsp.config.dartls = {
+      cmd = { "dart", "language-server", "--protocol=lsp", "--client-id=neovim" },
+      filetypes = { "dart" },
+      root_markers = { "pubspec.yaml", "pubspec.yml", "pubspec.lock" },
+      on_attach = on_attach,
+      capabilities = capabilities,
+    }
+    vim.lsp.enable("dartls")
   end,
 }
