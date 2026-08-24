@@ -38,3 +38,34 @@ autocmd("TextYankPost", {
     })
   end,
 })
+
+local function extract_decorators ()
+  -- 1. Get all lines from the current buffer
+  -- (0 refers to the current buffer, 0 to -1 means first line to last line)
+  local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+
+  local methods = { "Get", "Post", "Patch", "Delete" }
+  local results = {}
+
+  -- 2. Process the lines (Equivalent to your .map and .filter)
+  for _, line in ipairs(lines) do
+    local trimmed = vim.trim(line)
+    for _, method in ipairs(methods) do
+      if vim.startswith(trimmed, "@" .. method) then
+        table.insert(results, trimmed)
+        break
+      end
+    end
+  end
+
+  -- 3. Create a new scratch buffer for the output
+  local out_buf = vim.api.nvim_create_buf(false, true) -- listed=false, scratch=true
+  vim.api.nvim_buf_set_lines(out_buf, 0, -1, false, results)
+
+  -- 4. Open the new buffer in a vertical split
+  vim.api.nvim_command("vsplit")
+  vim.api.nvim_win_set_buf(0, out_buf)
+end
+
+-- Create a user command so you can run it via :ExtractMethods
+vim.api.nvim_create_user_command("ExtractMethods", extract_decorators, {})

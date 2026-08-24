@@ -14,6 +14,9 @@ vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", keyopts("Move blocks of line up
 vim.keymap.set("x", "<leader>d", '"_d', keyopts("Delete without yank"))
 vim.keymap.set("x", "<leader>p", '"_dP', keyopts("Paste without yank"))
 
+vim.keymap.set("v", ">", ">gv", keyopts("Indent and stay in visual mode"))
+vim.keymap.set("v", "<", "<gv", keyopts("Unindent and stay in visual mode"))
+
 -- Buffer
 vim.keymap.set("n", "<C-n>", ":BufferLineCycleNext<CR>", keyopts("Go to next buffer"))
 vim.keymap.set("n", "<C-p>", ":BufferLineCyclePrev<CR>", keyopts("Go to previous buffer"))

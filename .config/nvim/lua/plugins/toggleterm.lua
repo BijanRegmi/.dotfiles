@@ -28,6 +28,11 @@ return {
     local lazygit = Terminal:new({
       cmd = "lazygit",
       dir = "git_dir",
+      highlights = {
+        NormalFloat = {
+          guibg = "#181818",
+        },
+      },
       direction = "float",
     })
     function _lazygit_toggle ()

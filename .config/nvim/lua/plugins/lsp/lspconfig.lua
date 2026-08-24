@@ -5,11 +5,14 @@ local keyopts = require("config.utils").keymap.opts
 local function on_attach (client, bufnr)
   -- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
+  vim.keymap.set("n", "sgd", ":vsplit | lua vim.lsp.buf.definition()<CR>", keyopts("[S]plit and [G]oto [D]efinition", bufnr))
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, keyopts("[G]oto [D]efinition", bufnr))
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, keyopts("[G]oto [D]eclaration", bufnr))
   vim.keymap.set("n", "gr", vim.lsp.buf.references, keyopts("[G]oto [R]eferences", bufnr))
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, keyopts("[G]oto [I]mplementation", bufnr))
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, keyopts("View docs", bufnr))
+  vim.keymap.set("n", "K", function ()
+    vim.lsp.buf.hover({ border = "rounded" })
+  end, keyopts("View docs", bufnr))
   vim.keymap.set("i", "<C-k>", function ()
     vim.lsp.buf.signature_help({ border = "rounded" })
   end, keyopts("Signature help", bufnr))
@@ -87,12 +90,29 @@ return {
       vim.lsp.config[server] = opts
     end
 
+    -- Prefer the project-pinned FVM SDK, fall back to the global dart on PATH.
+    local fvm_dart = vim.fn.getcwd() .. "/.fvm/flutter_sdk/bin/dart"
+    local dart_bin = vim.fn.executable(fvm_dart) == 1 and fvm_dart or "dart"
+
     vim.lsp.config.dartls = {
-      cmd = { "dart", "language-server", "--protocol=lsp", "--client-id=neovim" },
+      cmd = { dart_bin, "language-server", "--protocol=lsp", "--client-id=neovim" },
       filetypes = { "dart" },
       root_markers = { "pubspec.yaml", "pubspec.yml", "pubspec.lock" },
       on_attach = on_attach,
       capabilities = capabilities,
+      init_options = {
+        onlyAnalyzeProjectsWithOpenFiles = false,
+        suggestFromUnimportedLibraries = true,
+        closingLabels = true,
+        outline = true,
+        flutterOutline = true,
+      },
+      settings = {
+        dart = {
+          completeFunctionCalls = true,
+          showTodos = true,
+        },
+      },
     }
     vim.lsp.enable("dartls")
   end,
