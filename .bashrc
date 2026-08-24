@@ -41,36 +41,32 @@ FVM_PATH="$HOME/.fvm_flutter/bin"
 FVM_FLUTTER_PATH="$HOME/fvm/default/bin"
 export CHROME_EXECUTABLE="/usr/bin/google-chrome-stable"
 
-export PATH=$PATH:~/.local/bin/:$CARGO_PATH:$BUN_PATH:$GO_PATH:$FVM_PATH:$FVM_FLUTTER_PATH
+## Neovim Mason-installed tools (LSPs, formatters, etc.)
+MASON_PATH="$HOME/.local/share/nvim/mason/bin"
 
-cdc() {
-    cd $HOME/Documents/Coding/$1
-}
+export PATH=$PATH:~/.local/bin/:$CARGO_PATH:$BUN_PATH:$GO_PATH:$FVM_PATH:$FVM_FLUTTER_PATH:$MASON_PATH
 
-_cdc_complete() {
-    local cur=${COMP_WORDS[COMP_CWORD]}
-    local C_DIR=$HOME/Documents/Coding/
-    COMPREPLY=( $(compgen -d -S / -- $C_DIR"$cur" | sed -e 's|'$C_DIR'||') )
-}
-
-complete -o nospace -F _cdc_complete cdc
+[ -f ~/.bash_aliases_nav ] && source ~/.bash_aliases_nav
 
 neofetch
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ "$TERM" =~ xterm ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-    exec tmux
+if [ "$TERM_PROGRAM" != "vscode" ]; then
+  if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ "$TERM" =~ xterm ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+      exec tmux
+  fi
 fi
 
 
 eval "$(starship init bash)"
 
-export RIPGREP_CONFIG_PATH="$HOME.rg"
+export RIPGREP_CONFIG_PATH="$HOME/.rg"
 
-# pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
+
 export PATH="/home/immo/.shorebird/bin:$PATH"
 export PATH="$PATH:$HOME/.pub-cache/bin"
+
+eval "$(direnv hook bash)"

@@ -37,7 +37,7 @@ case $selected in
 			notify-send "Screenshot" "Fullscreen saved to $name"
             ;;
         $delay_copy_sel)
-			sleep 3 && grim -g "$(slurp)" - | wl-copy
+            area=$(slurp) && sleep 3 && grim -g "$area" - | wl-copy
 			notify-send "Screenshot" "Selction copied to clipboard"
 			;;
         $delay_copy_full)
@@ -45,15 +45,13 @@ case $selected in
 			notify-send "Screenshot" "Fullscreen copied to clipboard"
 			;;
 		$delay_save_sel)
-			sleep 3
 			name=/home/$USER/Pictures/screenshot_$(date +%b-%d_%H-%H-%M-%S).png
-			grim -g "$(slurp)" "$name"
+            area=$(slurp) && sleep 3 && grim -g "$area" "$name"
 			notify-send "Screenshot" "Selection saved to $name"
 			;;
         $delay_save_full)
-			sleep 3 
 			name=/home/$USER/Pictures/screenshot_$(date +%b-%d_%H-%H-%M-%S).png
-			grim "$name"
+			sleep 3 && grim "$name"
 			notify-send "Screenshot" "Fullscreen saved to $name"
             ;;
 esac
